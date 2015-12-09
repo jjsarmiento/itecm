@@ -56,6 +56,7 @@
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in">Discipulus Bookshop</div>
+                 <hr class="small">
                 <div class="intro-heading">READ AND LET READ</div>
                 <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
             </div>
@@ -68,7 +69,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">This is what we can offer</h3>
                 </div>
             </div>
             <div class="row text-center">
@@ -78,7 +79,7 @@
                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">E-Commerce</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">Shop now</p>
                 </div>
                 <div class="col-md-6">
                     <span class="fa-stack fa-4x">
@@ -86,7 +87,7 @@
                         <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Responsive Design</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">We try our best to make our site as user-friendly as possible</p>
                 </div>
 <!--                <div class="col-md-4">-->
 <!--                    <span class="fa-stack fa-4x">-->
@@ -101,7 +102,7 @@
     </section>
 
     <!-- Portfolio Grid Section -->
-    <section id="portfolio" class="bg-light-gray">
+    <!--<section id="portfolio" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -196,7 +197,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- About Section -->
     <section id="about">
@@ -204,11 +205,16 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">About our website.</h3>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 text-center">
+                <h4 class="text-muted">Basically we are a service based company that helps people sell their books online.</h4>
+                <h4 class="text-muted">Sellers do this by paying an advertisement fee so their books can be seen by people.</h4>
+                <h4 class="text-muted">Premium users will have their product more prominent when customers are browsing the catalog.</h4>
+            </div>
+               <!-- <div class="col-lg-12">
                     <ul class="timeline">
                         <li>
                             <div class="timeline-image">
@@ -274,7 +280,7 @@
                             </div>
                         </li>
                     </ul>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
@@ -285,15 +291,15 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">E-commerce Project</h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="<?=base_url()?>assets/img/team/1.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Kay Garland</h4>
-                        <p class="text-muted">Lead Designer</p>
+                        <h4>Jan Sarmiento</h4>
+                      <!--  <p class="text-muted">Lead Designer</p>-->
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -307,8 +313,8 @@
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="<?=base_url()?>assets/img/team/2.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Larry Parker</h4>
-                        <p class="text-muted">Lead Marketer</p>
+                        <h4>Cherrylet Castro</h4>
+                        <!--<p class="text-muted">Lead Marketer</p>-->
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -322,8 +328,39 @@
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="<?=base_url()?>assets/img/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Diana Pertersen</h4>
-                        <p class="text-muted">Lead Developer</p>
+                        <h4>Ren Benig</h4>
+                       <!-- <p class="text-muted">Lead Developer</p>-->
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="<?=base_url()?>assets/img/team/4.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Miguel Rodriguez</h4>
+                       <!-- <p class="text-muted">Lead Developer</p>-->
+                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="<?=base_url()?>assets/img/team/5.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Emmanuel Francisco</h4>
+                       <!-- <p class="text-muted">Lead Developer</p>-->
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -337,14 +374,14 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                    <p class="large text-muted">A very small five member team.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Clients Aside -->
-    <aside class="clients">
+   <!-- <aside class="clients">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
@@ -369,7 +406,7 @@
                 </div>
             </div>
         </div>
-    </aside>
+    </aside>-->
 
     <!-- Contact Section -->
     <section id="contact">
@@ -377,7 +414,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Anytime. You will get a reply within a day.</h3>
                 </div>
             </div>
             <div class="row">
@@ -420,7 +457,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2014</span>
+                    <span class="copyright">Copyright &copy; Discipulus 2015</span>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">
