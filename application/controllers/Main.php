@@ -17,4 +17,8 @@ class Main extends CI_Controller {
         $this->load->view('registration');
         $this->load->view('header and footer/footer');
     }
+
+    public function test(){
+        
+    }
 }
