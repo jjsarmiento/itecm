@@ -1,3 +1,89 @@
+
+
+###################
+To Do List
+###################
+User Type :
+	Admin
+	User
+	Guest
+	
+User Privilege :
+	Guest :
+		- View Book Ads/Reviews
+		- Register
+	Admin :
+		- Delete/Edit Book Ad
+		- Deactivate/Activate Account
+		- Delete/Edit Book Reviews
+	Company/User :
+		- Edit/Delete Own Ad
+		- Edit Profile Details
+		- CRUD Book Reviews
+		- View/Edit Bookmarked Books/Ad
+
+Book Ad Properties :
+	- Title
+	- Description
+	- Price
+	- Condition
+		- 2nd Hand
+		- Brand New
+
+	Basic User :
+		30 Days Expiry
+	Premium User :
+		Unlimited
+		Sponsored/Bumped Up Ad
+		
+		
+Profile Info of Users / Registration Details
+	Company
+		- Company Name
+		- Address
+		- Description/Nature of business
+		- Contact Info
+		- Photo
+		- Email (Unique)
+		- Account Reviews
+		- Book Reviews
+	Person
+		- Full name
+		- Address
+		- About Me
+		- Contact Info
+		- Photo
+		- Email (Unique)
+		- Account Reviews
+		- Book Reviews
+		
+MODULES
+	WEB
+		- Login
+		- Register
+		- Edit Profile
+		- CRUD Product
+		- Review User
+		- Review Book
+		- Search Book / Catalogue
+		- Profile View
+	MOBILE
+		- Account Features
+		- Catalogue of Products
+		- Filters
+		- View Seller Info
+		- Project Info
+		
+
+
+###################
+End of To Do List
+###################
+
+
+
+
+
 ###################
 What is CodeIgniter
 ###################
