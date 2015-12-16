@@ -39,23 +39,23 @@ Book Ad Properties :
 		
 Profile Info of Users / Registration Details
 	Company
-		- Company Name
-		- Address
+		- Company Name/
+		- Address/
 		- Description/Nature of business
-		- Contact Info
+		- Contact Info/
 		- Photo
-		- Email (Unique)
-		- Account Reviews
-		- Book Reviews
+		- Email (Unique)/
+		- Account Reviews(??)
+		- Book Reviews(??)
 	Person
-		- Full name
-		- Address
-		- About Me
-		- Contact Info
+		- Full name/
+		- Address/
+		- About Me/
+		- Contact Info/
 		- Photo
-		- Email (Unique)
-		- Account Reviews
-		- Book Reviews
+		- Email (Unique)/
+		- Account Reviews(??)
+		- Book Reviews(??)
 		
 MODULES
 	WEB

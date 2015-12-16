@@ -22,7 +22,7 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Shop</a>
+                        <a class="page-scroll" href="#">Shop</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
@@ -68,7 +68,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                   <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
                 </div>
             </div>
             <div class="row text-center">
@@ -78,7 +78,7 @@
                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">E-Commerce</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">By browsing our catalog, it will be easier for our customers to buy and sell books.</p>
                 </div>
                 <div class="col-md-6">
                     <span class="fa-stack fa-4x">
@@ -86,7 +86,7 @@
                         <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Ad Services</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">Selling of books will cost customers an advertising fee and advertise their books to a wide variety of audience.</p>
                 </div>
 <!--                <div class="col-md-4">-->
 <!--                    <span class="fa-stack fa-4x">-->
@@ -204,7 +204,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <!--<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
                 </div>
             </div>
             <div class="row">
@@ -220,7 +220,7 @@
                                     <h4 class="subheading">Our Humble Beginnings</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">This started as an e-commerce project for our Web and mobile development course</p>
                                 </div>
                             </div>
                         </li>
@@ -234,7 +234,7 @@
                                     <h4 class="subheading">An Idea</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Now we are one step closer into completing our project.</p>
                                 </div>
                             </div>
                         </li>
@@ -284,8 +284,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading">Our Team</h2>
                 </div>
             </div>
             <div class="row">
@@ -293,7 +292,6 @@
                     <div class="team-member">
                         <img src="<?=base_url()?>assets/img/team/emman.jpg" class="img-responsive img-circle" alt="">
                         <h4>Emmanuel Francisco</h4>
-                        <p class="text-muted">Lead Designer</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -307,9 +305,7 @@
                 <div class="col-sm-4">
                     <div class="team-member">
                         <img src="<?=base_url()?>assets/img/team/cherry.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Cherrylet Castro</h4>
-                        <p class="text-muted">Lead Marketer</p>
-                        <ul class="list-inline social-buttons">
+                        <h4>Cherrylet Castro</h4>                        <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a>
@@ -323,8 +319,34 @@
                     <div class="team-member">
                         <img src="<?=base_url()?>assets/img/team/jan.jpg" class="img-responsive img-circle" alt="">
                         <h4>Jan Sarmiento</h4>
-                        <p class="text-muted">Lead Developer</p>
+                       <!-- <p class="text-muted">Lead Developer</p>-->
                         <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="<?=base_url()?>assets/img/team/ren.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Ren Benig</h4>                        <ul class="list-inline social-buttons">
+                            <li><a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img src="<?=base_url()?>assets/img/team/miguel.jpg" class="img-responsive img-circle" alt="">
+                        <h4>Miguel Antonio Rodriguez</h4>                        <ul class="list-inline social-buttons">
                             <li><a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li><a href="#"><i class="fa fa-facebook"></i></a>
@@ -336,9 +358,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -382,7 +401,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">P. Paredes, Sampaloc, Manila, Metro Manila, Philippines</h3>
                 </div>
             </div>
             <div class="row">
@@ -425,7 +444,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2014</span>
+                    <span class="copyright">Copyright &copy; Discipulus 2015</span>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">
