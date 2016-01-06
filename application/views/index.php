@@ -16,19 +16,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
-
-
-
-
-
-
-
-
-
-
-
-
-               <a href="#page-top"></a>
+                        <a href="#page-top"></a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#about">About</a>
@@ -39,8 +27,6 @@
                     <li>
                         <a class="page-scroll" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
                     </li>
-
-
 <!--                    <li>-->
 <!--                        <a class="page-scroll" href="#services">Services</a>-->
 <!--                    </li>-->

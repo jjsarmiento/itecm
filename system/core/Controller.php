@@ -93,4 +93,19 @@ class CI_Controller {
 		return self::$instance;
 	}
 
+    public static function exclusiveRouteFor($userType, $loggedType){
+        if($loggedType == null){
+            redirect(base_url());
+        }
+
+        if($userType == 'ADMIN'){
+            if($loggedType == 'USER' || $loggedType == NULL){
+                redirect(base_url().'shop/home');
+            }
+        }else{
+            if($loggedType == 'ADMIN'){
+                redirect(base_url().'Admin/home');
+            }
+        }
+    }
 }
