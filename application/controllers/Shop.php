@@ -10,6 +10,7 @@ class Shop extends CI_Controller {
         parent::__construct();
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $this->load->model('Model_User');
+        $this->load->model('Model_Products');
     }
 
     public function home(){
@@ -17,6 +18,72 @@ class Shop extends CI_Controller {
 
         $this->load->view('shop/header and footer/shopheader', $data);
         $this->load->view('shop/home');
+        $this->load->view('shop/header and footer/shopfooter');
+    }
+
+    public function addBook(){
+        $data['title'] = 'Sell a book! - Discipulus Bookshop';
+
+        $this->load->view('shop/header and footer/shopheader', $data);
+        $this->load->view('shop/addBook');
+        $this->load->view('shop/header and footer/shopfooter');
+    }
+
+    public function doAddProduct(){
+        $path_parts = pathinfo($_FILES['prodImg']["name"]);
+        $extension = $path_parts['extension'];
+        $newfilename= uniqid().".".$extension;
+
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '4194304';
+        $config['file_name'] = $newfilename;
+//        $config['max_width'] = '1024';
+//        $config['max_height'] = '768';
+        $this->load->library('upload', $config);
+
+        if($this->upload->do_upload('prodImg')){
+            $data = array('upload_data' => $this->upload->data());
+        }else{
+            $_SESSION['errorMsg'] = $this->upload->display_errors();
+            redirect(base_url().'Admin/addBook');
+        }
+
+        $productData = array(
+            'title'         =>  $this->input->post('bookTitle'),
+            'author'        =>  $this->input->post('bookAuthor'),
+            'price'         =>  $this->input->post('bookPrice'),
+            'description'   =>  $this->input->post('description'),
+            'img'           =>  base_url().'uploads/'.$newfilename
+        );
+
+        $productInsertId = $this->Model_Products->addProduct($productData);
+        redirect(base_url().'shop/viewProduct/'.$productInsertId);
+
+//        if($img['size'] >= 4194304){
+//            $_SESSION['errorMsg'] = 'File size is too large. Must be below 4mb';
+//            redirect(base_url().'Admin/addProduct');
+//        }
+    }
+
+    public function viewProduct($id){
+        $prodData['prod'] = $this->Model_Products->getProductData($id);
+        $data['title'] = 'Discipulus Bookshop';
+
+        $this->load->view('shop/header and footer/shopheader', $data);
+        $this->load->view('shop/viewProduct', $prodData);
+        $this->load->view('shop/header and footer/shopfooter');
+    }
+
+    public function userProfile(){
+        $data = array(
+            'products'  =>  $this->Model_Products->getAllProducts('')
+        );
+
+        $data['title'] = 'Discipulus Bookshop';
+
+        $this->load->view('shop/header and footer/shopheader', $data);
+        $this->load->view('shop/userProfile');
         $this->load->view('shop/header and footer/shopfooter');
     }
 

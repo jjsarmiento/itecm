@@ -8,8 +8,9 @@
 class Admin extends CI_Controller {
     public function __construct(){
         parent::__construct();
-        $this->exclusiveRouteFor('ADMIN', @$_SESSION['type']);
+//        $this->exclusiveRouteFor('ADMIN', @$_SESSION['type']);
         $this->load->model('Model_User');
+        $this->load->model('Model_Products');
     }
 
     public function home(){

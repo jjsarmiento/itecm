@@ -37,10 +37,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="<?=base_url()?>shop/home"><i class="fa fa-home"></i> Home</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="<?=base_url()?>shop/addBook"><span class="nav-item-bold"><i class="fa fa-plus"></i> SELL BOOK</span></a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
@@ -54,3 +54,5 @@
         </div>
         <!-- /.container -->
     </nav>
+    <!-- Page Content -->
+    <div class="container">

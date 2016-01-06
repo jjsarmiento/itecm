@@ -27,3 +27,37 @@
     /*-ms-transform: translate(-50%,-50%);*/
     transform: translate(-50%,-50%);
 }
+
+.nav-item-bold {
+    color: #F1C40F;
+    border: 0.08em solid #F1C40F;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    transition : 0.4s;
+}
+
+.nav-item-bold i {
+    color : #C0392B;
+}
+
+.nav-item-bold:hover {
+    background-color: #F1C40F;
+    border: 0.08em solid #F1C40F;
+    color : black;
+}
+
+@media screen and (max-width: 767px) {
+    .nav-item-bold {
+        display: block;
+    }
+}
+
+.caption {
+    height: 140px !important;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+    margin-bottom: 0;
+}

@@ -1,5 +1,4 @@
-<!-- Page Content -->
-<div class="container">
+
 
     <!-- Jumbotron Header -->
     <header class="jumbotron hero-spacer">
