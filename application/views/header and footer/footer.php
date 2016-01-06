@@ -47,7 +47,16 @@
                                 <input type="text" class="form-control" id="regLastname" placeholder="Last Name">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" id="regBirthdate" placeholder="Birthdate">
+                                <input type="text" class="form-control" id="regAddress" placeholder="Address">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" id="regAbout" placeholder="About Me"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="regContact" placeholder="Contact Info">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="regEmail" placeholder="E-mail">
                             </div>
                         </div>
                         <div class="col-md-6">
