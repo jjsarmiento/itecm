@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/bootstrap-3.3.5-dist/css/bootstrap.min.css" />
         <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="<?=base_url()?>assets/css/heroic-features.css" rel="stylesheet" type="text/css">
+        <link href="<?=base_url()?>assets/css/itecm_custom.css" rel="stylesheet" type="text/css">
 
         <!-- SCRIPTS - START -->
         <script type="text/javascript" src="<?=base_url()?>assets/js/jquery.min.js"></script>
