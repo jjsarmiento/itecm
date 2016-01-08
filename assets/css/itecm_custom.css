@@ -52,9 +52,10 @@
     }
 }
 
-.caption {
+.caption-ownad {
     height: 140px !important;
     overflow: hidden;
+    padding: 0.3em;
 }
 
 .caption h4 {

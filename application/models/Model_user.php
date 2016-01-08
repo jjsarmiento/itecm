@@ -59,13 +59,22 @@ class Model_user extends CI_Model {
         }
     }
 
-    public function getUserData($email){
+    public function getUserData($id){
         return $this->db
-            ->select('email, firstname, lastname, id, type')
+            ->select('email, firstname, lastname, id, type, address, about, contact, status')
             ->from('users')
-            ->where('email', $email)
+            ->where('id', $id)
+            ->or_where('email', $id)
             ->get()
-            ->row_array();
+            ->row();
 //                ->result_array();
+    }
+
+    public function toggleStatus($id, $data){
+        $this->db
+            ->select('*')
+            ->from('users')
+            ->where('id', $id)
+            ->update('users', $data);
     }
 }

@@ -17,8 +17,15 @@
 
                         <center>
                             <span style="font-size: 0.9em;">
-                                Not registered yet?<br/>Start shopping and Register <a href="#" data-toggle="modal" data-target="#registerModal">here</a>!
+                                Not registered yet?<br/>Start shopping and Register <a href="#" data-toggle="modal" data-target="#registerModal">here</a>!<br/>
                             </span>
+
+                            <?php
+                                if(@$_SESSION['errorMsg']){
+                                    echo $_SESSION['errorMsg'];
+                                    $this->session->sess_destroy();
+                                }
+                            ?>
                         </center>
                         <!--                    <p>One fine body&hellip;</p>-->
                     </div>

@@ -28,6 +28,22 @@ class Model_Products extends CI_Model {
                 ->row_array();
     }
 
+    public function myAds($id){
+//        $query = $this->db
+//            ->select('*')
+//            ->from('products');
+//        return $query
+//            ->get()
+//            ->result();
+
+        return $this->db
+                ->select('*')
+                ->from('products')
+                ->where('user_id', $id)
+                ->get()
+                ->result();
+    }
+
     public function getAllProducts(){
         $query = $this->db
                     ->select('*')

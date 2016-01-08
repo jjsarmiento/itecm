@@ -32,14 +32,8 @@
                         </div>
                         <hr/>
                         <span class="pull-right">
-                            <?php
-                                if($prod['user_id'] == $_SESSION['id']){
-                            ?>
-                                    <a href="<?=base_url()?>shop/editAd/<?=$prod['id']?>" class="btn btn-success"><i class="fa fa-edit"></i> EDIT AD</a>
-                                    <a href="<?=base_url()?>shop/deleteAd/<?=$prod['id']?>" class="btn btn-danger"><i class="fa fa-trash"></i> DELETE AD</a>
-                            <?php
-                                }
-                            ?>
+                            <a href="<?=base_url()?>admin/editAd/<?=$prod['id']?>" class="btn btn-success"><i class="fa fa-edit"></i> EDIT AD</a>
+                            <a href="<?=base_url()?>admin/deleteAd/<?=$prod['id']?>" class="btn btn-danger"><i class="fa fa-trash"></i> DELETE AD</a>
                         </span>
                     </div>
                 </div>

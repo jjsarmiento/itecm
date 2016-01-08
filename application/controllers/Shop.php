@@ -13,7 +13,15 @@ class Shop extends CI_Controller {
         $this->load->model('Model_Products');
     }
 
+    public function index(){
+        $this->home();
+    }
+
     public function home(){
+        $data = array(
+            'products'  =>  $this->Model_Products->getAllProducts()
+        );
+
         $data['title'] = 'Discipulus Bookshop';
 
         $this->load->view('shop/header and footer/shopheader', $data);
@@ -50,6 +58,7 @@ class Shop extends CI_Controller {
         }
 
         $productData = array(
+            'user_id'       =>  $_SESSION['id'],
             'title'         =>  $this->input->post('bookTitle'),
             'author'        =>  $this->input->post('bookAuthor'),
             'price'         =>  $this->input->post('bookPrice'),
@@ -77,7 +86,7 @@ class Shop extends CI_Controller {
 
     public function userProfile(){
         $data = array(
-            'products'  =>  $this->Model_Products->getAllProducts('')
+            'products'  =>  $this->Model_Products->myAds($_SESSION['id'])
         );
 
         $data['title'] = 'Discipulus Bookshop';
@@ -90,5 +99,27 @@ class Shop extends CI_Controller {
     public function logout(){
         $this->session->sess_destroy();
         redirect(base_url());
+    }
+
+    public function editAd($id){
+        $data['prod'] = $this->Model_Products->getProductData($id);
+        $data['title'] = 'Discipulus Bookshop';
+
+        $this->load->view('shop/header and footer/shopheader', $data);
+        $this->load->view('shop/editAd');
+        $this->load->view('shop/header and footer/shopfooter');
+    }
+
+    public function doEdit($id){
+        var_dump($this->input->post());
+        $data = array(
+            'title'         => $this->input->post('bookTitle'),
+            'description'   => $this->input->post('bookDesc'),
+            'price'         => $this->input->post('bookPrice'),
+            'author'        => $this->input->post('bookAuthor'),
+        );
+
+        $this->Model_Products->updateProduct($id, $data);
+        redirect(base_url().'shop/viewProduct/'.$id);
     }
 }

@@ -41,11 +41,11 @@ class Main extends CI_Controller {
                 $user_data = $this->Model_User->getUserData($this->input->post('regEmail'));
 
                 $loggedUser = array(
-                    'id'            =>  $user_data['id'],
-                    'email'         =>  $user_data['email'],
-                    'firstname'     =>  $user_data['firstname'],
-                    'lastname'      =>  $user_data['lastname'],
-                    'type'          =>  $user_data['type'],
+                    'id'            =>  $user_data->id,
+                    'email'         =>  $user_data->email,
+                    'firstname'     =>  $user_data->firstname,
+                    'lastname'      =>  $user_data->lastname,
+                    'type'          =>  $user_data->type,
                     'logged_in'     =>  true
                 );
 
@@ -64,29 +64,32 @@ class Main extends CI_Controller {
             'password'  =>  $this->input->post('loginPassword')
         );
 
-        var_dump($data['email']);
-
         if($this->Model_User->authUser($data) > 0){
             $user_data = $this->Model_User->getUserData($this->input->post('loginEmail'));
 //            $user_data['logged_in'] = true;
 //            var_dump($user_data['email']);
 
-            $loggedUser = array(
-//                'username'  =>  $user_data['email'],
-                'id'            =>  $user_data['id'],
-                'email'         =>  $user_data['email'],
-                'firstname'     =>  $user_data['firstname'],
-                'lastname'      =>  $user_data['lastname'],
-                'type'          =>  $user_data['type'],
-                'logged_in'     =>  true
-            );
-
-            $this->session->set_userdata($loggedUser);
-
-            if($user_data['type'] == 'ADMIN'){
-                redirect(base_url().'Admin/home');
+            if($user_data->status == 'DEACTIVATED'){
+                $_SESSION['errorMsg'] = '<span style="color: #C0392B; font-size: 0.9em;">This account has been deactivated. Please contact the administrator for further details @ discipulus@gmail.com</span>';
+                redirect(base_url());
             }else{
-                redirect(base_url().'shop/home');
+                $loggedUser = array(
+//                'username'  =>  $user_data['email'],
+                    'id'            =>  $user_data->id,
+                    'email'         =>  $user_data->email,
+                    'firstname'     =>  $user_data->firstname,
+                    'lastname'      =>  $user_data->lastname,
+                    'type'          =>  $user_data->type,
+                    'logged_in'     =>  true
+                );
+
+                $this->session->set_userdata($loggedUser);
+
+                if($user_data->type == 'ADMIN'){
+                    redirect(base_url().'Admin/home');
+                }else{
+                    redirect(base_url().'shop/home');
+                }
             }
         }else{
             $this->load->view('errors/error_page', array('error' => 'Login Credentials Invalid'));

@@ -20,17 +20,17 @@
                 <div class="thumbnailx">
                     <img src="<?=$product->img?>" style="" alt="">
                 </div>
-                <div class="caption">
-                    <h4><a href="<?=base_url().'Admin/viewProduct/'.$product->id?>"><?=$product->title?></a></h4>
+                <div class="caption-ownad">
+                    <h4><a href="<?=base_url().'shop/viewProduct/'.$product->id?>"><?=$product->title?></a></h4>
                     <span style="font-weight: bold;">P<?=$product->price?>.00</span>
                     <p style="margin-top: 0.3em;"><?=$product->description?></p>
                 </div>
                 <div class="ratings">
-                    <hr style="margin: 0; margin-top: 0.4em;"/>
-                    <p style="padding: 0; margin: 0; margin-top: 0.4em; margin-bottom: 0.4em;">
-                        <a class="action-btns action-btns-delete" data-href="<?=base_url()?>Admin/deleteProduct/<?=$product->id?>"><i class="fa fa-trash"></i></a>
-                        <a class="action-btns" href="<?=base_url()?>Admin/editProduct/<?=$product->id?>"><i class="fa fa-edit"></i></a>
-                    </p>
+                    <hr style="margin-bottom: 0.3em; margin-top: 0.4em;"/>
+                    <div class="btn-group btn-group-justified" role="group">
+                        <a href="<?=base_url()?>shop/editAd/<?=$product->id?>" class="btn btn-success btn-block"><i class="fa fa-edit"></i> EDIT</a>
+                        <a href="<?=base_url()?>shop/deleteAd/<?=$product->id?>" class="btn btn-danger btn-block"><i class="fa fa-trash"></i> DELETE</a>
+                    </div>
                 </div>
             </div>
         </div>
