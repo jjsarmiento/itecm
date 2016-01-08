@@ -39,15 +39,25 @@
                     <li>
                         <a href="<?=base_url()?>shop/home"><i class="fa fa-home"></i> Home</a>
                     </li>
-                    <li>
-                        <a href="<?=base_url()?>shop/addBook"><span class="nav-item-bold"><i class="fa fa-plus"></i> SELL BOOK</span></a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url()?>shop/logout"><i class="fa fa-power-off"></i> Logout</a>
-                    </li>
+                    <?php
+                        if(@$_SESSION['logged_in']){
+                    ?>
+                            <li>
+                                <a href="<?=base_url()?>shop/addBook"><span class="nav-item-bold"><i class="fa fa-plus"></i> SELL BOOK</span></a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url()?>shop/logout"><i class="fa fa-power-off"></i> Logout</a>
+                            </li>
+                    <?php
+                        }else{
+                    ?>
+                            <li>
+                                <a href="#" data-toggle="modal" data-target="#registerModal"><span class="nav-item-bold"><i class="fa fa-plus"></i> SELL A BOOK NOW!</span></a>
+                            </li>
+                    <?php
+                        }
+                    ?>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -8,7 +8,7 @@
 class Shop extends CI_Controller {
     public function __construct(){
         parent::__construct();
-        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+//        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $this->load->model('Model_User');
         $this->load->model('Model_Products');
     }
@@ -30,6 +30,7 @@ class Shop extends CI_Controller {
     }
 
     public function addBook(){
+        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['title'] = 'Sell a book! - Discipulus Bookshop';
 
         $this->load->view('shop/header and footer/shopheader', $data);
@@ -38,6 +39,7 @@ class Shop extends CI_Controller {
     }
 
     public function doAddProduct(){
+        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $path_parts = pathinfo($_FILES['prodImg']["name"]);
         $extension = $path_parts['extension'];
         $newfilename= uniqid().".".$extension;
@@ -85,6 +87,7 @@ class Shop extends CI_Controller {
     }
 
     public function userProfile(){
+        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data = array(
             'products'  =>  $this->Model_Products->myAds($_SESSION['id'])
         );
@@ -102,6 +105,7 @@ class Shop extends CI_Controller {
     }
 
     public function editAd($id){
+        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['prod'] = $this->Model_Products->getProductData($id);
         $data['title'] = 'Discipulus Bookshop';
 
@@ -111,6 +115,7 @@ class Shop extends CI_Controller {
     }
 
     public function doEdit($id){
+        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         var_dump($this->input->post());
         $data = array(
             'title'         => $this->input->post('bookTitle'),
