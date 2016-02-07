@@ -6,9 +6,11 @@
         <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="<?=base_url()?>assets/css/heroic-features.css" rel="stylesheet" type="text/css">
         <link href="<?=base_url()?>assets/css/itecm_custom.css" rel="stylesheet" type="text/css">
+        <link href="<?=base_url()?>assets/css/jquery-ui.css" rel="stylesheet">
 
         <!-- SCRIPTS - START -->
         <script type="text/javascript" src="<?=base_url()?>assets/js/jquery.min.js"></script>
+        <script type="text/javascript" src="<?=base_url()?>assets/js/jquery-ui.js"></script>
         <script type="text/javascript" src="<?=base_url()?>assets/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?=base_url()?>assets/js/itecm_custom.js"></script>
         <!-- SCRIPTS - END -->
@@ -57,7 +59,9 @@
                     <?php
                         }
                     ?>
-
+                    <li>
+                        <a href="<?=base_url()?>"><i class="fa fa-heart"></i> About</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

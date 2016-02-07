@@ -36,6 +36,14 @@
                                 <div class="form-group">
                                     <textarea class="form-control" id="regAbout" name="regAbout" placeholder="About Me"></textarea>
                                 </div>
+                                <div class="form-group">
+                                    Gender&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="regGender" id="regGender" value="male"> Male
+                                    <input type="radio" name="regGender" id="regGender" value="female"> Female<br>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="regBdate" name="regBdate" placeholder="Birthdate" readonly />
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <center><h4><i class="fa fa-list"></i> Account Information</h4></center>
