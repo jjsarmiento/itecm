@@ -54,6 +54,9 @@
                         }else{
                     ?>
                             <li>
+                                <a href="#" data-toggle="modal" data-target="#loginModal"><i class="fa fa-power-off"></i> Login</a>
+                            </li>
+                            <li>
                                 <a href="#" data-toggle="modal" data-target="#registerModal"><span class="nav-item-bold"><i class="fa fa-plus"></i> SELL A BOOK NOW!</span></a>
                             </li>
                     <?php

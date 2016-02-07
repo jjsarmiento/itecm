@@ -25,6 +25,26 @@ class Main extends CI_Controller {
 
     public function doRegister(){
         if($this->Model_User->checkUser($this->input->post('regEmail')) == 0){
+            $path_parts = pathinfo($_FILES['regDPic']["name"]);
+            $extension = $path_parts['extension'];
+            $newfilename= uniqid().".".$extension;
+
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '4194304';
+            $config['file_name'] = $newfilename;
+//        $config['max_width'] = '1024';
+//        $config['max_height'] = '768';
+            $this->load->library('upload', $config);
+
+            if($this->upload->do_upload('regDPic')){
+                $data = array('upload_data' => $this->upload->data());
+            }else{
+                $_SESSION['errorMsg'] = $this->upload->display_errors();
+                var_dump($_SESSION['errorMsg']);
+                //redirect(base_url().'Admin/addBook');
+            }
+
             $data = array(
                 'email'     =>  $this->input->post('regEmail'),
                 'password'  =>  md5($this->input->post('regPassword')),
@@ -32,7 +52,10 @@ class Main extends CI_Controller {
                 'lastname'  =>  $this->input->post('regLastname'),
                 'contact'   =>  $this->input->post('regContact'),
                 'address'   =>  $this->input->post('regAddress'),
-                'about'   =>  $this->input->post('regAbout'),
+                'about'     =>  $this->input->post('regAbout'),
+                'birthday'  =>  $this->input->post('regBdate'),
+                'gender'    =>  $this->input->post('regGender'),
+                'disp_pic'  =>  base_url().'uploads/'.$newfilename
             );
 
             if($this->Model_User->addUser($data) != true){

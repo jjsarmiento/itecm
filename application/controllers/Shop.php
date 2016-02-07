@@ -89,7 +89,8 @@ class Shop extends CI_Controller {
     public function userProfile(){
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data = array(
-            'products'  =>  $this->Model_Products->myAds($_SESSION['id'])
+            'products'  =>  $this->Model_Products->myAds($_SESSION['id']),
+            'user'      =>  $this->Model_User->getUserData($_SESSION['id'])
         );
 
         $data['title'] = 'Discipulus Bookshop';

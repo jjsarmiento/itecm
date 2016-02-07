@@ -1,13 +1,3 @@
-<style>
-    .prod-img {
-        background-color: black;
-        max-width: 100%;
-        max-height: 30em;
-        border: 1px solid #BDC3C7;
-        border-radius: 0.3em;
-        /*background-color: #000000;*/
-    }
-</style>
 <div class="container">
     <div class="row">
         <div class="col-md-8">

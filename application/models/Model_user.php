@@ -61,7 +61,7 @@ class Model_user extends CI_Model {
 
     public function getUserData($id){
         return $this->db
-            ->select('email, firstname, lastname, id, type, address, about, contact, status')
+            ->select('email, firstname, lastname, id, type, address, about, contact, status, gender, disp_pic, birthday')
             ->from('users')
             ->where('id', $id)
             ->or_where('email', $id)
