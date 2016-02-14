@@ -32,7 +32,7 @@
                                 ?>
                                 <div class="row">
                                     <div class="col-md-12" style="margin-bottom: 0.8em;">
-                                        <div style="background-color : #ECF0F1; padding: 0.6em; text-align: justify;">
+                                        <div style="background-color : #ECF0F1; padding: 0.8em; text-align: justify;">
                                             <span class="review-name-tag"><a href="<?=base_url()?>shop/viewUser/<?=$reviews[$i]['user_id']?>"><?=$reviews[$i]['user_fullname']?></a></span>
                                             <?=$reviews[$i]['content']?>
                                             <Hr style="margin-top: 0.3em; margin-bottom: 0.3em;"/>

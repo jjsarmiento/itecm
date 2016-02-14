@@ -12,6 +12,7 @@ class Model_review extends CI_Model{
             ->select('*')
             ->from('reviews')
             ->where('prod_id', $product)
+            ->order_by('created_at', 'DESC')
             ->get()
             ->result_array();
     }
