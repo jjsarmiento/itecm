@@ -47,6 +47,7 @@ class Model_Products extends CI_Model {
     public function getAllProducts(){
         $query = $this->db
                     ->select('*')
+                    ->order_by('date_added', 'DESC')
                     ->from('products');
         return $query
             ->get()

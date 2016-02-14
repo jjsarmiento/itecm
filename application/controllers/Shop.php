@@ -182,4 +182,70 @@ class Shop extends CI_Controller {
         $this->Model_Ureview->deleteUserReview($id);
         redirect($this->agent->referrer());
     }
+
+    public function editProfile(){
+        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+
+        $data['title'] = 'Discipulus Bookshop';
+
+        $this->load->view('shop/header and footer/shopheader', $data);
+        $this->load->view('shop/editProfile');
+        $this->load->view('shop/header and footer/shopfooter');
+    }
+
+    public function doEditProfile(){
+        $dp = "";
+        if ($_FILES['editDPic']['size'] != 0 && $_FILES['editDPic']['error'] != 0){
+            $path_parts = pathinfo($_FILES['regDPic']["name"]);
+            $extension = $path_parts['extension'];
+            $newfilename= uniqid().".".$extension;
+
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '4194304';
+            $config['file_name'] = $newfilename;
+//        $config['max_width'] = '1024';
+//        $config['max_height'] = '768';
+            $this->load->library('upload', $config);
+
+            if($this->upload->do_upload('regDPic')){
+                $data = array('upload_data' => $this->upload->data());
+            }else{
+                $_SESSION['errorMsg'] = $this->upload->display_errors();
+                var_dump($_SESSION['errorMsg']);
+                //redirect(base_url().'Admin/addBook');
+            }
+
+            $dp = base_url().'uploads/'.$newfilename;
+        }else{
+            $dp = $_SESSION['disp_pic'];
+        }
+
+        $data = array(
+            'email'     =>  $this->input->post('editEmail'),
+            'firstname' =>  $this->input->post('editFname'),
+            'lastname'  =>  $this->input->post('editLname'),
+            'contact'   =>  $this->input->post('editContact'),
+            'address'   =>  $this->input->post('editAddress'),
+            'about'     =>  $this->input->post('editAbout'),
+            'birthday'  =>  $this->input->post('editBdate'),
+            'gender'    =>  $this->input->post('editGender'),
+            'disp_pic'  =>  $dp
+        );
+
+        $data_merge = array(
+            'id'                =>  $_SESSION['id'],
+            'type'              =>  $_SESSION['type'],
+            'date_added'        =>  $_SESSION['date_added'],
+            'status'            =>  $_SESSION['status'],
+            'logged_in'         =>  true,
+        );
+
+        $this->Model_User->updateUser($_SESSION['id'], $data);
+        //$this->session->sess_destroy();
+        $data = array_merge($data, $data_merge);
+        $this->session->set_userdata($data);
+
+        redirect($this->agent->referrer());
+    }
 }

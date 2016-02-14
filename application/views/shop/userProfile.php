@@ -11,7 +11,7 @@
                 <?=$user->firstname?> <?=$user->lastname?>
                 <?php
                 if($_SESSION['id'] == $user->id){
-                    echo '<button class="btn btn-xs btn-default pull-right"><i class="fa fa-edit"></i> Edit Profile</button>';
+                    echo '<a href="'.base_url().'shop/editProfile" class="btn btn-xs btn-default pull-right"><i class="fa fa-edit"></i> Edit Profile</a>';
                 }
                 ?>
             </h2>
@@ -51,8 +51,8 @@
                 if(@$_SESSION['id'] == $r['reviewer_id'] || @$_SESSION['id'] == $r['reviewee_id']){
                     ?>
                     <span class="pull-right">
-                                                        <a href="<?=base_url()?>shop/deleteUserReview/<?=$r['id']?>"><i class="fa fa-trash"></i></a>
-                                                    </span>
+                        <a href="<?=base_url()?>shop/deleteUserReview/<?=$r['id']?>"><i class="fa fa-trash"></i></a>
+                    </span>
                     <hr style="margin: .5em; visibility: hidden;"/>
                 <?php
                 }

@@ -61,7 +61,7 @@ class Model_user extends CI_Model {
 
     public function getUserData($id){
         return $this->db
-            ->select('email, firstname, lastname, id, type, address, about, contact, status, gender, disp_pic, birthday')
+            ->select('*')
             ->from('users')
             ->where('id', $id)
             ->or_where('email', $id)
@@ -71,6 +71,14 @@ class Model_user extends CI_Model {
     }
 
     public function toggleStatus($id, $data){
+        $this->db
+            ->select('*')
+            ->from('users')
+            ->where('id', $id)
+            ->update('users', $data);
+    }
+
+    public function updateUser($id, $data){
         $this->db
             ->select('*')
             ->from('users')

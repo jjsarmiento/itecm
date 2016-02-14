@@ -55,7 +55,7 @@
                                             <span class="review-name-tag"><a href="<?=base_url()?>shop/viewUser/<?=$reviews[$i]['user_id']?>"><?=$reviews[$i]['user_fullname']?></a></span>
                                             <?=$reviews[$i]['content']?>
                                             <Hr style="margin-top: 0.3em; margin-bottom: 0.3em;"/>
-                                            <span class="review-name-tag"><i class="fa fa-clock-o"></i> <?=$reviews[$i]['created_at']?></span>
+                                            <span class="review-name-tag" style="font-size: 0.8em;"><i class="fa fa-clock-o"></i> <?=$reviews[$i]['created_at']?></span>
                                         </div>
                                     </div>
                                 </div>

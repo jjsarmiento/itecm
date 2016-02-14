@@ -12,7 +12,8 @@
     </div>
     <!-- /.container -->
 
-    <form method="POST" action="<?=base_url()?>Main/doRegister">
+    <!--<form method="POST" action="<?=base_url()?>Main/doRegister">-->
+    <?=form_open_multipart('Main/doRegister')?>
         <div class="modal fade" tabindex="-1" role="dialog" id="registerModal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -38,11 +39,28 @@
                                 </div>
                                 <div class="form-group">
                                     Gender&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="radio" name="regGender" id="regGender" value="male"> Male
-                                    <input type="radio" name="regGender" id="regGender" value="female"> Female<br>
+                                    <input type="radio" name="regGender" id="regGender" value="male" required="required"> Male
+                                    <input type="radio" name="regGender" id="regGender" value="female" required="required"> Female<br>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="regBdate" name="regBdate" placeholder="Birthdate" readonly />
+                                </div>
+
+                                <div class="well">
+                                    <?php
+                                    if(isset($_SESSION['errorMsg'])){
+                                        echo '<span style="color: red;"><i class="fa fa-warning"></i> '.$_SESSION['errorMsg'].'</span><br/><br/>';
+                                        unset($_SESSION['errorMsg']);
+                                    }
+                                    ?>
+                                    Upload Profile Picture<Br/>
+                                <span style="color: #7F8C8D; font-size: 0.9em;">
+                                    <span style="color:red">*</span> Image file size must be below 4mb<br/>
+                                    <span style="">*</span> Recommended dimensions must be 320x150 Width = 320, Height = 150
+                                </span>
+                                    <br/>
+                                    <br/>
+                                    <input class="form-control" name="regDPic" type="file" accept="image/*" required="required"/>
                                 </div>
                             </div>
                             <div class="col-md-6">

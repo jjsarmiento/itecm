@@ -6,4 +6,9 @@ $(function() {
         changeMonth: true,
         changeYear: true
     });
+
+    $( "#editBdate" ).datepicker({
+        changeMonth: true,
+        changeYear: true
+    });
 });

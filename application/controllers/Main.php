@@ -64,11 +64,20 @@ class Main extends CI_Controller {
                 $user_data = $this->Model_User->getUserData($this->input->post('regEmail'));
 
                 $loggedUser = array(
+//                'username'  =>  $user_data['email'],
                     'id'            =>  $user_data->id,
                     'email'         =>  $user_data->email,
                     'firstname'     =>  $user_data->firstname,
                     'lastname'      =>  $user_data->lastname,
                     'type'          =>  $user_data->type,
+                    'date_added'    =>  $user_data->date_added,
+                    'address'       =>  $user_data->address,
+                    'about'         =>  $user_data->about,
+                    'status'        =>  $user_data->status,
+                    'disp_pic'      =>  $user_data->disp_pic,
+                    'contact'       =>  $user_data->contact,
+                    'gender'        =>  $user_data->gender,
+                    'birthday'      =>  $user_data->birthday,
                     'logged_in'     =>  true
                 );
 
@@ -103,6 +112,14 @@ class Main extends CI_Controller {
                     'firstname'     =>  $user_data->firstname,
                     'lastname'      =>  $user_data->lastname,
                     'type'          =>  $user_data->type,
+                    'date_added'    =>  $user_data->date_added,
+                    'address'       =>  $user_data->address,
+                    'about'         =>  $user_data->about,
+                    'status'        =>  $user_data->status,
+                    'disp_pic'      =>  $user_data->disp_pic,
+                    'contact'       =>  $user_data->contact,
+                    'gender'        =>  $user_data->gender,
+                    'birthday'      =>  $user_data->birthday,
                     'logged_in'     =>  true
                 );
 
