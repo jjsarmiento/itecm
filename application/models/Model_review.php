@@ -29,4 +29,12 @@ class Model_review extends CI_Model{
         ->get()
         ->result_array();
     }
+
+    public function deleteComment($id){
+        $this->db
+            ->select('*')
+            ->from('reviews')
+            ->where('id', $id)
+            ->delete();
+    }
 }

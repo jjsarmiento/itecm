@@ -1,7 +1,8 @@
 <div class="container">
     <div class="row">
         <h3 style="margin-bottom: 0;"><?=$prod['title']?></h3>
-        <span>by <?=$prod['author']?></span>
+        <span><?=$prod['author']?></span><br/>
+        ad posted by <a href="<?=base_url()?>shop/viewUser/<?=$prod['user_id']?>"><?=$prod['user_fullname']?></a>
         <hr/>
         <div class="col-md-8">
             <div class="row">
@@ -10,6 +11,14 @@
                         <div class="thumbnailx"  style="height: 250px;">
                             <img class="prod-img" src="<?=$prod['img']?>">
                         </div>
+                        <?php
+                        if($prod['user_id'] == @$_SESSION['id']){
+                            ?>
+                            <a href="<?=base_url()?>shop/editAd/<?=$prod['id']?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                            <a href="<?=base_url()?>shop/deleteAd/<?=$prod['id']?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <div class="col-md-8">
                         <div class="row">
@@ -33,6 +42,16 @@
                                 <div class="row">
                                     <div class="col-md-12" style="margin-bottom: 0.8em;">
                                         <div style="background-color : #ECF0F1; padding: 0.8em; text-align: justify;">
+                                            <?php
+                                                if(@$_SESSION['id'] == $prod['user_id'] || @$_SESSION['id'] == $reviews[$i]['user_id']){
+                                            ?>
+                                                    <span class="pull-right">
+                                                        <a href="<?=base_url()?>shop/deleteComment/<?=$reviews[$i]['id']?>"><i class="fa fa-trash"></i></a>
+                                                    </span>
+                                                    <hr style="margin: .5em; visibility: hidden;"/>
+                                            <?php
+                                                }
+                                            ?>
                                             <span class="review-name-tag"><a href="<?=base_url()?>shop/viewUser/<?=$reviews[$i]['user_id']?>"><?=$reviews[$i]['user_fullname']?></a></span>
                                             <?=$reviews[$i]['content']?>
                                             <Hr style="margin-top: 0.3em; margin-bottom: 0.3em;"/>
@@ -58,27 +77,33 @@
                         -->
                         <div class="row" style="margin-top: 1em;">
                         <span class="pull-right">
-                            <?php
-                            if($prod['user_id'] == @$_SESSION['id']){
-                                ?>
-                                <a href="<?=base_url()?>shop/editAd/<?=$prod['id']?>" class="btn btn-success"><i class="fa fa-edit"></i> EDIT AD</a>
-                                <a href="<?=base_url()?>shop/deleteAd/<?=$prod['id']?>" class="btn btn-danger"><i class="fa fa-trash"></i> DELETE AD</a>
-                            <?php
-                            }
-                            ?>
+
                         </span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <form method="POST" action="<?=base_url()?>shop/addReview/<?=$prod['id']?>">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <textarea class="form-control" rows="15" placeholder="Add A Review for <?=$prod['title']?>" id="review" name="review"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-xs pull-right">Post Review</button>
-            </div>
-        </form>
+        <?php
+            if(@$_SESSION['logged_in']){
+                ?>
+                <form method="POST" action="<?=base_url()?>shop/addReview/<?=$prod['id']?>">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="15" placeholder="Add A Review for <?=$prod['title']?>" id="review" name="review"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-xs pull-right">Post Review</button>
+                    </div>
+                </form>
+                <?php
+            }else{
+                ?>
+                <center>
+                <i>You must be logged in to post a review for <?=$prod['title']?></i><br/>
+                <i>Click <a href="#" data-toggle="modal" data-target="#loginModal">here</a> to login</i><br/>
+                </center>
+                <?php
+            }
+        ?>
     </div>
 </div>

@@ -12,6 +12,7 @@ class Shop extends CI_Controller {
         $this->load->model('Model_User');
         $this->load->model('Model_Products');
         $this->load->model('Model_Review');
+        $this->load->model('Model_Ureview');
     }
 
     public function index(){
@@ -62,6 +63,7 @@ class Shop extends CI_Controller {
 
         $productData = array(
             'user_id'       =>  $_SESSION['id'],
+            'user_fullname' =>  $_SESSION['firstname'].' '.$_SESSION['lastname'],
             'title'         =>  $this->input->post('bookTitle'),
             'author'        =>  $this->input->post('bookAuthor'),
             'price'         =>  $this->input->post('bookPrice'),
@@ -92,7 +94,8 @@ class Shop extends CI_Controller {
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data = array(
             'products'  =>  $this->Model_Products->myAds($_SESSION['id']),
-            'user'      =>  $this->Model_User->getUserData($_SESSION['id'])
+            'user'      =>  $this->Model_User->getUserData($_SESSION['id']),
+            'reviews'   =>  $this->Model_Ureview->getAllReview($_SESSION['id'])
         );
 
         $data['title'] = 'Discipulus Bookshop';
@@ -141,5 +144,42 @@ class Shop extends CI_Controller {
         ));
 
         redirect(base_url().'shop/viewProduct/'.$product_id);
+    }
+
+    public function deleteComment($commentId){
+        $this->Model_Review->deleteComment($commentId);
+        redirect($this->agent->referrer());
+    }
+
+    public function viewUser($id){
+
+        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        $data = array(
+            'products'  =>  $this->Model_Products->myAds($id),
+            'user'      =>  $this->Model_User->getUserData($id),
+            'reviews'   =>  $this->Model_Ureview->getAllReview($id)
+        );
+
+        $data['title'] = 'Discipulus Bookshop';
+
+        $this->load->view('shop/header and footer/shopheader', $data);
+        $this->load->view('shop/userProfile');
+        $this->load->view('shop/header and footer/shopfooter');
+    }
+
+    public function reviewUser($id){
+        $this->Model_Ureview->addReview(array(
+            'reviewer_id'       =>  $_SESSION['id'],
+            'reviewer_fullname' =>  $_SESSION['firstname'].' '.$_SESSION['lastname'],
+            'reviewee_id'       =>  $id,
+            'content'       =>  $_POST['userReview']
+        ));
+
+        redirect($this->agent->referrer());
+    }
+
+    public function deleteUserReview($id){
+        $this->Model_Ureview->deleteUserReview($id);
+        redirect($this->agent->referrer());
     }
 }
