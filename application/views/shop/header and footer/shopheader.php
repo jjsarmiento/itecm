@@ -66,6 +66,17 @@
                         <a href="<?=base_url()?>"><i class="fa fa-heart"></i> About</a>
                     </li>
                 </ul>
+
+                <div class="col-sm-4 col-md-4">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Title / Author" name="q">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i> Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <!-- /.navbar-collapse -->
         </div>

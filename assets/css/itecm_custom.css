@@ -66,3 +66,8 @@ body {
     white-space: nowrap;
     margin-bottom: 0;
 }
+
+.review-name-tag {
+    font-weight: bolder;
+    color : #3498DB;
+}

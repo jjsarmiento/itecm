@@ -11,6 +11,7 @@ class Shop extends CI_Controller {
 //        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $this->load->model('Model_User');
         $this->load->model('Model_Products');
+        $this->load->model('Model_Review');
     }
 
     public function index(){
@@ -79,6 +80,7 @@ class Shop extends CI_Controller {
 
     public function viewProduct($id){
         $prodData['prod'] = $this->Model_Products->getProductData($id);
+        $prodData['reviews'] = $this->Model_Review->getReview($id);
         $data['title'] = 'Discipulus Bookshop';
 
         $this->load->view('shop/header and footer/shopheader', $data);
@@ -127,5 +129,17 @@ class Shop extends CI_Controller {
 
         $this->Model_Products->updateProduct($id, $data);
         redirect(base_url().'shop/viewProduct/'.$id);
+    }
+
+    public function addReview($product_id){
+        $review = trim(strip_tags($_POST['review']));
+        $this->Model_Review->addReview(array(
+            'user_id'       => $_SESSION['id'],
+            'user_fullname' => $_SESSION['firstname'].' '.$_SESSION['lastname'],
+            'prod_id'       => $product_id,
+            'content'       => $review
+        ));
+
+        redirect(base_url().'shop/viewProduct/'.$product_id);
     }
 }
