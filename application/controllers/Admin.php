@@ -102,4 +102,9 @@ class Admin extends CI_Controller {
         $this->Model_Products->updateProduct($id, $data);
         redirect(base_url().'admin/viewProduct/'.$id);
     }
+
+    public function notice(){
+        $data['title'] = 'Administrator Mode';
+        $this->load->view('admin/notice');
+    }
 }

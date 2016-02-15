@@ -81,9 +81,9 @@
                 </ul>
 
                 <div class="col-sm-4 col-md-4">
-                    <form class="navbar-form" role="search">
+                    <form class="navbar-form" role="search" method="POST" action="<?=base_url()?>shop/search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Title / Author" name="q">
+                            <input value="<?=@$keyword?>" type="text" class="form-control" placeholder="Title / Author" name="searchKeyword" id="searchKeyword" required="required">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i> Search</button>
                             </div>

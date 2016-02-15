@@ -9,6 +9,10 @@ class Main extends CI_Controller {
     }
 
 	public function index(){
+//        if(@$_SESSION['type'] == 'ADMIN'){
+//            redirect(base_url().'Admin/home');
+//        }
+
         $data['title'] = 'Discipulus Bookshop';
 
 		$this->load->view('header and footer/header', $data);

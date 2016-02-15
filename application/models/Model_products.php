@@ -98,4 +98,22 @@ class Model_Products extends CI_Model {
 //                ->get()
 //                ->row_array();
 //    }
+
+    public function searchByAuthor($keyword){
+        return $this->db
+                ->select('*')
+                ->from('products')
+                ->like('author', $keyword)
+                ->get()
+                ->result();
+    }
+
+    public function searchByTitle($keyword){
+        return $this->db
+            ->select('*')
+            ->from('products')
+            ->like('title', $keyword)
+            ->get()
+            ->result();
+    }
 }
