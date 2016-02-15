@@ -26,13 +26,13 @@
                             <div class="col-md-6">
                                 <center><h4><i class="fa fa-user"></i> Personal Information</h4></center>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="regFirstname" name="regFirstname" placeholder="First Name">
+                                    <input type="text" min="4" class="form-control" id="regFirstname" name="regFirstname" placeholder="First Name">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="regLastname" name="regLastname" placeholder="Last Name">
+                                    <input type="text" min="4" class="form-control" id="regLastname" name="regLastname" placeholder="Last Name">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="regAddress" name="regAddress" placeholder="Address">
+                                    <input type="text" min="4" class="form-control" id="regAddress" name="regAddress" placeholder="Address">
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" id="regAbout" name="regAbout" placeholder="About Me"></textarea>
@@ -66,16 +66,16 @@
                             <div class="col-md-6">
                                 <center><h4><i class="fa fa-list"></i> Account Information</h4></center>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="regContact" name="regContact" placeholder="Contact Info">
+                                    <input type="text" min="11" class="form-control" id="regContact" name="regContact" placeholder="Contact Info">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="regEmail" name="regEmail" placeholder="E-mail">
+                                    <input type="text" min="4" class="form-control" id="regEmail" name="regEmail" placeholder="E-mail">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="regPassword" name="regPassword" placeholder="Password">
+                                    <input type="password" min="4" class="form-control" id="regPassword" name="regPassword" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="regCPassword" name="regCPassword" placeholder="Confirm Password">
+                                    <input type="password" min="4" class="form-control" id="regCPassword" name="regCPassword" placeholder="Confirm Password">
                                 </div>
                                 <div class="form-group">
                                     <input type="checkbox" id="regTOS" name="regTOS" title="You must approve by the terms and conditions of service to register." required="required"> <a href="#" data-toggle="modal" data-target="#TOSModal">Terms of Service</a>

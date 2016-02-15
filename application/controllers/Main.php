@@ -95,9 +95,8 @@ class Main extends CI_Controller {
                     'logged_in'     =>  true
                 );
 
-                $loggedUser['bookmarks'] = $this->Model_Bookmark->getAllBookmark_session($user_data->id);
 
-                $this->session->$data($loggedUser);
+                $this->session->set_userdata($loggedUser);
                 redirect(base_url().'shop/home');
             }
         }else{
