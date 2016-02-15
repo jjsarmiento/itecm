@@ -375,4 +375,9 @@ class Shop extends CI_Controller {
         $this->load->view('shop/search');
         $this->load->view('shop/header and footer/shopfooter');
     }
+
+    public function deleteAd($id){
+        $this->Model_products->deleteAd($id);
+        redirect(base_url().'shop/userProfile');
+    }
 }

@@ -20,9 +20,9 @@
                     </div>
                 </form>
 
-                <form method="POST" action="<?=base_url()?>admin/searchBook">
+                <form method="POST" action="<?=base_url()?>admin/searchUser">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for users" name="userSearch" id="userSearch" required="required">
+                        <input type="text" class="form-control" placeholder="Search for users" name="adSearch" id="adSearch" required="required">
                         <div class="input-group-btn">
                             <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i> Go</button>
                         </div>

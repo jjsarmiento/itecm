@@ -9,11 +9,11 @@ class Admin extends CI_Controller {
     public function __construct(){
         parent::__construct();
 //        $this->exclusiveRouteFor('ADMIN', @$_SESSION['type']);
-        $this->load->model('Model_User');
-        $this->load->model('Model_Products');
-        $this->load->model('Model_Ureview');
-        $this->load->model('Model_Review');
-        $this->load->model('Model_Bookmark');
+        $this->load->model('Model_user');
+        $this->load->model('Model_products');
+        $this->load->model('Model_ureview');
+        $this->load->model('Model_review');
+        $this->load->model('Model_bookmark');
     }
 
     public function index(){
@@ -22,7 +22,7 @@ class Admin extends CI_Controller {
 
     public function home(){
         $data = array(
-            'products'  =>  $this->Model_Products->getAllProducts(''),
+            'products'  =>  $this->Model_products->getAllProducts(''),
             'title'     =>  'DB - ADMIN VIEW'
         );
 //        $data['title'] = 'DB - ADMIN VIEW';
@@ -34,7 +34,7 @@ class Admin extends CI_Controller {
 
     public function manageUsers(){
         $data = array(
-            'users'  =>  $this->Model_User->getAllUsers(),
+            'users'  =>  $this->Model_user->getAllUsers(),
             'title'     =>  'DB - ADMIN VIEW'
         );
 
@@ -45,14 +45,14 @@ class Admin extends CI_Controller {
 
     public function viewUser($id){
         $data = array(
-            'user'      =>  $this->Model_User->getUserData($id),
+            'user'      =>  $this->Model_user->getUserData($id),
             'title'     =>  'DB - ADMIN VIEW',
-            'for_reviews' =>  $this->Model_Ureview->review_for_user($id),
-            'by_reviews' =>  $this->Model_Ureview->review_by_user($id),
-            'products'  =>  $this->Model_Products->myAds($id),
+            'for_reviews' =>  $this->Model_ureview->review_for_user($id),
+            'by_reviews' =>  $this->Model_ureview->review_by_user($id),
+            'products'  =>  $this->Model_products->myAds($id),
         );
 
-        $data['ads'] = $this->Model_Bookmark->getAllBookmark($id);
+        $data['ads'] = $this->Model_bookmark->getAllBookmark($id);
 
         $this->load->view('admin/header and footer/adminheader', $data);
         $this->load->view('admin/viewUser');
@@ -68,7 +68,7 @@ class Admin extends CI_Controller {
         $data = array(
             'status'    =>  'DEACTIVATED'
         );
-        $this->Model_User->toggleStatus($id, $data);
+        $this->Model_user->toggleStatus($id, $data);
         redirect(base_url().'admin/viewUser/'.$id);
     }
 
@@ -76,15 +76,15 @@ class Admin extends CI_Controller {
         $data = array(
             'status'    =>  'ACTIVATED'
         );
-        $this->Model_User->toggleStatus($id, $data);
+        $this->Model_user->toggleStatus($id, $data);
         redirect(base_url().'admin/viewUser/'.$id);
     }
 
     public function viewProduct($id){
-        $data['prod'] = $this->Model_Products->getProductData($id);
+        $data['prod'] = $this->Model_products->getProductData($id);
         $data['title'] = 'DB - ADMIN VIEW';
-        $prodData['reviews'] = $this->Model_Review->getReview($id);
-        $prodData['bookmarked'] = $this->Model_Bookmark->isBookmarked($id);
+        $prodData['reviews'] = $this->Model_review->getReview($id);
+        $prodData['bookmarked'] = $this->Model_bookmark->isBookmarked($id);
 
         $this->load->view('admin/header and footer/adminheader', $data);
         $this->load->view('admin/viewProduct', $prodData);
@@ -92,7 +92,7 @@ class Admin extends CI_Controller {
     }
 
     public function editAd($id){
-        $data['prod'] = $this->Model_Products->getProductData($id);
+        $data['prod'] = $this->Model_products->getProductData($id);
         $data['title'] = 'Discipulus Bookshop';
 
         $this->load->view('admin/header and footer/adminheader', $data);
@@ -109,7 +109,7 @@ class Admin extends CI_Controller {
             'author'        => $this->input->post('bookAuthor'),
         );
 
-        $this->Model_Products->updateProduct($id, $data);
+        $this->Model_products->updateProduct($id, $data);
         redirect(base_url().'admin/viewProduct/'.$id);
     }
 
@@ -119,7 +119,7 @@ class Admin extends CI_Controller {
     }
 
     public function deleteUserReview($id){
-        $this->Model_Ureview->deleteUserReview($id);
+        $this->Model_ureview->deleteUserReview($id);
         redirect($this->agent->referrer());
     }
 
@@ -128,20 +128,20 @@ class Admin extends CI_Controller {
             'password'  =>  md5($_POST['newPass'])
         );
 
-        $this->Model_User->updateUser($_SESSION['id'], $updatedData);
+        $this->Model_user->updateUser($_SESSION['id'], $updatedData);
         $_SESSION['successMsg'] = 'Password Succesfully Changed!';
         redirect($this->agent->referrer());
     }
 
     public function deleteComment($id){
-        $this->Model_Review->deleteComment($id);
+        $this->Model_review->deleteComment($id);
         redirect($this->agent->referrer());
     }
 
     public function searchBook(){
         $data['title'] = 'Search for '.$_POST['adSearch'];
-        $data['by_authors'] = $this->Model_Products->searchByAuthor($_POST['adSearch']);
-        $data['by_title'] = $this->Model_Products->searchByTitle($_POST['adSearch']);
+        $data['by_authors'] = $this->Model_products->searchByAuthor($_POST['adSearch']);
+        $data['by_title'] = $this->Model_products->searchByTitle($_POST['adSearch']);
         $data['keyword'] = $_POST['adSearch'];
 
         $this->load->view('admin/header and footer/adminheader', $data);
@@ -151,11 +151,16 @@ class Admin extends CI_Controller {
 
     public function searchUser(){
         $data['title'] = 'Search for '.$_POST['adSearch'];
-        $data['users'] = $this->Model_User->searchUsers($_POST['adSearch']);
+        $data['users'] = $this->Model_user->searchUsers($_POST['adSearch']);
         $data['keyword'] = $_POST['adSearch'];
 
         $this->load->view('admin/header and footer/adminheader', $data);
         $this->load->view('admin/searchUser');
         $this->load->view('admin/header and footer/adminfooter');
+    }
+
+    public function deleteAd($id){
+        $this->Model_products->deleteAd($id);
+        redirect(base_url().'admin/home');
     }
 }

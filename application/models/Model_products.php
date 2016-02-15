@@ -117,4 +117,12 @@ class Model_Products extends CI_Model {
             ->get()
             ->result();
     }
+
+    public function deleteAd($id){
+        $this->db
+            ->select('*')
+            ->from('products')
+            ->where('id', $id)
+            ->delete();
+    }
 }
