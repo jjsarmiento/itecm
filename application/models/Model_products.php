@@ -113,6 +113,7 @@ class Model_Products extends CI_Model {
             ->select('*')
             ->from('products')
             ->like('title', $keyword)
+            ->order_by('title', 'ASC')
             ->get()
             ->result();
     }

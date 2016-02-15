@@ -137,4 +137,25 @@ class Admin extends CI_Controller {
         $this->Model_Review->deleteComment($id);
         redirect($this->agent->referrer());
     }
+
+    public function searchBook(){
+        $data['title'] = 'Search for '.$_POST['adSearch'];
+        $data['by_authors'] = $this->Model_Products->searchByAuthor($_POST['adSearch']);
+        $data['by_title'] = $this->Model_Products->searchByTitle($_POST['adSearch']);
+        $data['keyword'] = $_POST['adSearch'];
+
+        $this->load->view('admin/header and footer/adminheader', $data);
+        $this->load->view('admin/searchBook');
+        $this->load->view('admin/header and footer/adminfooter');
+    }
+
+    public function searchUser(){
+        $data['title'] = 'Search for '.$_POST['adSearch'];
+        $data['users'] = $this->Model_User->searchUsers($_POST['adSearch']);
+        $data['keyword'] = $_POST['adSearch'];
+
+        $this->load->view('admin/header and footer/adminheader', $data);
+        $this->load->view('admin/searchUser');
+        $this->load->view('admin/header and footer/adminfooter');
+    }
 }

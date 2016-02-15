@@ -17,6 +17,7 @@
                                 </div>
                                 <div class="caption-ownad">
                                     <h4><a href="<?=base_url().'shop/viewProduct/'.$ba->id?>"><?=$ba->title?></a></h4>
+                                    <span style="font-weight: bold;">by <?=$ba->author?></span><br/>
                                     <span style="font-weight: bold;">P<?=$ba->price?>.00</span>
                                     <p style="margin-top: 0.3em;"><?=$ba->description?></p>
                                 </div>
@@ -41,6 +42,7 @@
                                 </div>
                                 <div class="caption-ownad">
                                     <h4><a href="<?=base_url().'shop/viewProduct/'.$ba->id?>"><?=$ba->title?></a></h4>
+                                    <span style="font-weight: bold;">by <?=$ba->author?></span><br/>
                                     <span style="font-weight: bold;">P<?=$ba->price?>.00</span>
                                     <p style="margin-top: 0.3em;"><?=$ba->description?></p>
                                 </div>

@@ -86,4 +86,14 @@ class Model_user extends CI_Model {
             ->where('id', $id)
             ->update('users', $data);
     }
+
+    public function searchUsers($keyword){
+        return $this->db
+            ->select('*')
+            ->from('users')
+            ->like('firstname', $keyword)
+            ->or_like('lastname', $keyword)
+            ->get()
+            ->result();
+    }
 }

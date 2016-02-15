@@ -9,6 +9,25 @@
                 <a href="<?=base_url()?>admin/home" class="list-group-item"><i class="fa fa-cubes"></i> Manage Advertisments</a>
                 <!--                <a href="--><?//=base_url()?><!--admin/addProduct" class="list-group-item"><i class="fa fa-plus"></i> Add Product</a>-->
                 <a href="<?=base_url()?>admin/manageUsers" class="list-group-item"><i class="fa fa-users"></i> Manage Users</a>
+
+                <hr/>
+                <form method="POST" action="<?=base_url()?>admin/searchBook">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for Title/Author" name="adSearch" id="adSearch" required="required">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i> Go</button>
+                        </div>
+                    </div>
+                </form>
+
+                <form method="POST" action="<?=base_url()?>admin/searchBook">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for users" name="userSearch" id="userSearch" required="required">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i> Go</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -52,36 +71,6 @@
                 <?php
                     }
                 ?>
-
-                <!--                <div class="col-sm-4 col-lg-4 col-md-4">-->
-                <!--                    <div class="thumbnail">-->
-                <!--                        <img src="--><?//=base_url()?><!--assets/img/320x150.png" alt="">-->
-                <!--                        <div class="caption">-->
-                <!--                            <h4 class="pull-right">$24.99</h4>-->
-                <!--                            <h4><a href="#">First Product</a>-->
-                <!--                            </h4>-->
-                <!--                            <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>-->
-                <!--                        </div>-->
-                <!--                        <div class="ratings">-->
-                <!--                            <p class="pull-right">15 reviews</p>-->
-                <!--                            <p>-->
-                <!--                                <span class="glyphicon glyphicon-star"></span>-->
-                <!--                                <span class="glyphicon glyphicon-star"></span>-->
-                <!--                                <span class="glyphicon glyphicon-star"></span>-->
-                <!--                                <span class="glyphicon glyphicon-star"></span>-->
-                <!--                                <span class="glyphicon glyphicon-star"></span>-->
-                <!--                            </p>-->
-                <!--                        </div>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-
-                <!--                <div class="col-sm-4 col-lg-4 col-md-4">-->
-                <!--                    <h4><a href="#">Like this template?</a>-->
-                <!--                    </h4>-->
-                <!--                    <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>-->
-                <!--                    <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>-->
-                <!--                </div>-->
-
             </div>
 
         </div>
