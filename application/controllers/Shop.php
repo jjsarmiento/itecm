@@ -24,7 +24,7 @@ class Shop extends CI_Controller {
         $data = array(
             'products'  =>  $this->Model_Products->getAllProducts()
         );
-
+        $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks($_SESSION['id']);
         $data['title'] = 'Discipulus Bookshop';
 
         $this->load->view('shop/header and footer/shopheader', $data);
@@ -35,6 +35,7 @@ class Shop extends CI_Controller {
     public function addBook(){
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['title'] = 'Sell a book! - Discipulus Bookshop';
+        $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks($_SESSION['id']);
 
         $this->load->view('shop/header and footer/shopheader', $data);
         $this->load->view('shop/addBook');
@@ -86,6 +87,7 @@ class Shop extends CI_Controller {
         $prodData['reviews'] = $this->Model_Review->getReview($id);
         $prodData['bookmarked'] = $this->Model_Bookmark->isBookmarked($id);
         $data['title'] = 'Discipulus Bookshop';
+        $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks($_SESSION['id']);
 
         $this->load->view('shop/header and footer/shopheader', $data);
         $this->load->view('shop/viewProduct', $prodData);
@@ -101,6 +103,7 @@ class Shop extends CI_Controller {
         );
 
         $data['title'] = 'Discipulus Bookshop';
+        $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks($_SESSION['id']);
 
         $this->load->view('shop/header and footer/shopheader', $data);
         $this->load->view('shop/userProfile');
@@ -116,6 +119,7 @@ class Shop extends CI_Controller {
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['prod'] = $this->Model_Products->getProductData($id);
         $data['title'] = 'Discipulus Bookshop';
+        $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks($_SESSION['id']);
 
         $this->load->view('shop/header and footer/shopheader', $data);
         $this->load->view('shop/editAd');
@@ -124,6 +128,7 @@ class Shop extends CI_Controller {
 
     public function doEdit($id){
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks($_SESSION['id']);
         var_dump($this->input->post());
         $data = array(
             'title'         => $this->input->post('bookTitle'),
@@ -154,13 +159,13 @@ class Shop extends CI_Controller {
     }
 
     public function viewUser($id){
-
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data = array(
             'products'  =>  $this->Model_Products->myAds($id),
             'user'      =>  $this->Model_User->getUserData($id),
             'reviews'   =>  $this->Model_Ureview->getAllReview($id)
         );
+        $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks($_SESSION['id']);
 
         $data['title'] = 'Discipulus Bookshop';
 
@@ -189,6 +194,7 @@ class Shop extends CI_Controller {
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['user'] = $this->Model_User->getUserData($_SESSION['id']);
         $data['title'] = 'Discipulus Bookshop';
+        $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks($_SESSION['id']);
 
         $this->load->view('shop/header and footer/shopheader', $data);
         $this->load->view('shop/editProfile');
@@ -289,6 +295,7 @@ class Shop extends CI_Controller {
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['title'] = 'Sell a book! - Discipulus Bookshop';
         $data['ads'] = $this->Model_Bookmark->getAllBookmark($_SESSION['id']);
+        $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks($_SESSION['id']);
 
         $this->load->view('shop/header and footer/shopheader', $data);
         $this->load->view('shop/viewBookMarks');

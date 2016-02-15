@@ -63,7 +63,15 @@
                         }
                     ?>
                     <li>
-                        <a href="<?=base_url()?>shop/viewBookMarks"><i class="fa fa-bookmark"></i> Bookmarks</a>
+                        <a href="<?=base_url()?>shop/viewBookMarks">
+                            <i class="fa fa-bookmark"></i>
+                            Bookmarks
+                            <?php
+                                if(@$bookmark_count > 0){
+                                    echo '<span style="background-color: firebrick;" class="badge">'.$bookmark_count.'</span>';
+                                }
+                            ?>
+                        </a>
                     </li>
                     <!--
                     <li>

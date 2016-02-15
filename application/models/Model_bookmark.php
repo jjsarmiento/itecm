@@ -53,4 +53,12 @@ class Model_bookmark extends CI_Model{
             return false;
         }
     }
+
+    public function countBookmarks($userid){
+        return $this->db
+            ->select('*')
+            ->from('bookmarks')
+            ->where('user_id', $userid)
+            ->count_all_results();
+    }
 }
