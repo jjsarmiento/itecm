@@ -77,12 +77,28 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control" id="regCPassword" name="regCPassword" placeholder="Confirm Password">
                                 </div>
+                                <div class="form-group">
+                                    <input type="checkbox" id="regTOS" name="regTOS" title="You must approve by the terms and conditions of service to register." required="required"> <a href="#" data-toggle="modal" data-target="#TOSModal">Terms of Service</a>
+                                </div>
+                                <?php $cap_code = $captcha[rand(0, 5)]; ?>
+                                <div class="form-group well">
+                                    <img id="captchaImg" data-code="<?=$cap_code?>" src="<?=base_url()?>assets/img/captcha/<?=$cap_code?>.gif" style="margin-bottom: 1em;">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="regCaptcha" name="regCaptcha" placeholder="Enter captcha">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" id="captchaBtn">Check</button>
+                                    </span>
+                                    </div>
+                                    <span style="font-size: 0.9em"><span style="color: red;">*</span><i>You must first enter the correct captcha to register</i></span><br/>
+                                    <span style="font-size: 0.9em; color: red;" id="errorSpan"></span>
+                                    <span style="font-size: 0.9em; color: green;" id="successSpan"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <!--                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                        <button type="submit" class="btn btn-primary">Register</button>
+                        <button type="submit" class="btn btn-primary" id="regBtn" disabled>Register</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

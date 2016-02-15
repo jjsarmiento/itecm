@@ -18,6 +18,7 @@ class Shop extends CI_Controller {
         $this->load->model('Model_Review');
         $this->load->model('Model_Ureview');
         $this->load->model('Model_Bookmark');
+
     }
 
     public function index(){
@@ -34,6 +35,14 @@ class Shop extends CI_Controller {
         );
         $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks(@$_SESSION['id']);
         $data['title'] = 'Discipulus Bookshop';
+        $data['captcha'] = array(
+            '538112',
+            '571196',
+            '625708',
+            '6360424',
+            '6626512',
+            '071497003'
+        );
 
         $this->load->view('shop/header and footer/shopheader', $data);
         $this->load->view('shop/home');
