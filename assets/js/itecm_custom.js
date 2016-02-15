@@ -1,6 +1,18 @@
 /**
  * Created by Jan on 1/6/16.
  */
+$(document).ready(function(){
+   $('#captchaBtn').click(function(){
+        if($('#regCaptcha').val() == $('#captchaImg').data('code')){
+            $('#regBtn').removeAttr('disabled');
+            $('#successSpan').empty().append('<i class="fa fa-check"></i> Captcha code correct.');
+        }else{
+            $('#regBtn').prop('disabled', 'true');
+            $('#errorSpan').empty().append('<i class="fa fa-warning"></i> Captcha code incorrect! try again.');
+        }
+   });
+});
+
 $(function() {
     $( "#regBdate" ).datepicker({
         changeMonth: true,

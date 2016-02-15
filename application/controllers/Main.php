@@ -13,6 +13,15 @@ class Main extends CI_Controller {
 //            redirect(base_url().'Admin/home');
 //        }
 
+        $data['captcha'] = array(
+            '538112',
+            '571196',
+            '625708',
+            '6360424',
+            '6626512',
+            '071497003'
+        );
+
         $data['title'] = 'Discipulus Bookshop';
 
 		$this->load->view('header and footer/header', $data);
