@@ -185,7 +185,7 @@ class Shop extends CI_Controller {
 
     public function editProfile(){
         $this->exclusiveRouteFor('USER', @$_SESSION['type']);
-
+        $data['user'] = $this->Model_User->getUserData($_SESSION['id']);
         $data['title'] = 'Discipulus Bookshop';
 
         $this->load->view('shop/header and footer/shopheader', $data);
@@ -195,8 +195,9 @@ class Shop extends CI_Controller {
 
     public function doEditProfile(){
         $dp = "";
-        if ($_FILES['editDPic']['size'] != 0 && $_FILES['editDPic']['error'] != 0){
-            $path_parts = pathinfo($_FILES['regDPic']["name"]);
+
+        if ($_FILES['editDPic']['size'] != 0 && $_FILES['editDPic']['error'] == 0){
+            $path_parts = pathinfo($_FILES['editDPic']["name"]);
             $extension = $path_parts['extension'];
             $newfilename= uniqid().".".$extension;
 
@@ -208,7 +209,7 @@ class Shop extends CI_Controller {
 //        $config['max_height'] = '768';
             $this->load->library('upload', $config);
 
-            if($this->upload->do_upload('regDPic')){
+            if($this->upload->do_upload('editDPic')){
                 $data = array('upload_data' => $this->upload->data());
             }else{
                 $_SESSION['errorMsg'] = $this->upload->display_errors();
@@ -247,5 +248,33 @@ class Shop extends CI_Controller {
         $this->session->set_userdata($data);
 
         redirect($this->agent->referrer());
+    }
+
+    public function changePass($id){
+        $data = array(
+            'email'     => $_SESSION['email'],
+            'password'  => $_POST['oldPass'],
+        );
+
+        $truePass = $this->Model_User->authUser($data);
+
+        if($_POST['newPass'] !== $_POST['confirmNewPass']){
+            $_SESSION['errorMsg'] = 'New Password does not match';
+            redirect($this->agent->referrer());
+        }
+
+        if($truePass){
+            $updatedData = array(
+                'password'  =>  md5($_POST['newPass'])
+            );
+
+            $this->Model_User->updateUser($_SESSION['id'], $updatedData);
+            $_SESSION['successMsg'] = 'Password Succesfully Changed!';
+            redirect($this->agent->referrer());
+
+        }else{
+            $_SESSION['errorMsg'] = 'Old Password Incorrect';
+            redirect($this->agent->referrer());
+        }
     }
 }
