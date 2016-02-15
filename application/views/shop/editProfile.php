@@ -17,6 +17,10 @@
             <i class="fa fa-phone" style="color: #3498DB;"></i> <?=$user->contact?>
         </div>
 
+        <div class="form-group">
+            <i class="fa fa-birthday-cake" style="color: #3498DB;"></i> <?=$user->birthday?>
+        </div>
+
         <span style="color: #3498DB; font-size: 2em;">
             <?php
                 if($user->gender == 'MALE'){

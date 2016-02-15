@@ -31,6 +31,10 @@
             <i class="fa fa-phone" style="color: #3498DB;"></i> <?=$user->contact?>
         </div>
 
+        <div class="form-group">
+            <i class="fa fa-birthday-cake" style="color: #3498DB;"></i> <?=$user->birthday?>
+        </div>
+
         <hr/>
         <h3>
             <i class="fa fa-pencil"></i> Reviews
@@ -76,7 +80,7 @@
         ?>
         <?php
         if(count($products) == 0){
-            echo '<center><i><h3>No data available</h3></i></center>';
+            echo "<center><i>You haven't posted any ads yet</i></center>";
         }else{
             foreach($products as $product){
                 ?>

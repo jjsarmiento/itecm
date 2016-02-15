@@ -1,12 +1,12 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h3><i class="fa fa-bookmark"></i> Bookmarks</h3>
 
             <div class="row text-center">
                 <?php
                 if(count($ads) == 0){
-                    echo '<center><i><h3>No data available</h3></i></center>';
+                    echo "<center><i>You haven't bookmarked any ads yet</i></center>";
                 }
 
                 foreach($ads as $ad){
@@ -29,6 +29,5 @@
                 ?>
             </div>
         </div>
-        <div class="col-md-4 well"></div>
     </div>
 </div>

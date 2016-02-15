@@ -87,7 +87,8 @@ class Shop extends CI_Controller {
             'author'        =>  $this->input->post('bookAuthor'),
             'price'         =>  $this->input->post('bookPrice'),
             'description'   =>  $this->input->post('description'),
-            'img'           =>  base_url().'uploads/'.$newfilename
+            'img'           =>  base_url().'uploads/'.$newfilename,
+            'status'        =>  $this->input->post('bookStatus')
         );
 
         $productInsertId = $this->Model_Products->addProduct($productData);
