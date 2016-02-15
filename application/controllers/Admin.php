@@ -49,7 +49,10 @@ class Admin extends CI_Controller {
             'title'     =>  'DB - ADMIN VIEW',
             'for_reviews' =>  $this->Model_Ureview->review_for_user($id),
             'by_reviews' =>  $this->Model_Ureview->review_by_user($id),
+            'products'  =>  $this->Model_Products->myAds($id),
         );
+
+        $data['ads'] = $this->Model_Bookmark->getAllBookmark($id);
 
         $this->load->view('admin/header and footer/adminheader', $data);
         $this->load->view('admin/viewUser');
