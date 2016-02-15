@@ -1,11 +1,14 @@
 
 
     <!-- Jumbotron Header -->
-    <header class="jumbotron hero-spacer" style="padding: 2em; text-align: justify;">
+    <header class="jumbotron hero-spacer" style="padding: 2em; text-align: center;">
+        <img src="<?=base_url()?>assets/img/slogan.png">
+        <!--
         <h1>Read and let read!</h1>
         <p>
             Welcome to Discipulus, your humble start up for buying and selling books. We’re dedicated to giving you the very best experience on this website, with a focus on look, feel, functionality, and great community of likeminded people.Welcome to Discipulus, your humble start up for buying and selling books. We’re dedicated to giving you the very best experience on this website, with a focus on look, feel, functionality, and great community of likeminded people.
         </p>
+        -->
 <!--        <p><a class="btn btn-primary btn-large">Call to action!</a>-->
 <!--        </p>-->
     </header>
