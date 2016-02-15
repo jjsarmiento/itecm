@@ -13,6 +13,7 @@ class Shop extends CI_Controller {
         $this->load->model('Model_Products');
         $this->load->model('Model_Review');
         $this->load->model('Model_Ureview');
+        $this->load->model('Model_Bookmark');
     }
 
     public function index(){
@@ -217,6 +218,10 @@ class Shop extends CI_Controller {
                 //redirect(base_url().'Admin/addBook');
             }
 
+            if(file_exists(trim($_SESSION['disp_pic']))){
+                unlink(trim($_SESSION['disp_pic']));
+            }
+
             $dp = base_url().'uploads/'.$newfilename;
         }else{
             $dp = $_SESSION['disp_pic'];
@@ -276,5 +281,24 @@ class Shop extends CI_Controller {
             $_SESSION['errorMsg'] = 'Old Password Incorrect';
             redirect($this->agent->referrer());
         }
+    }
+
+    public function viewBookMarks(){
+        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        $data['title'] = 'Sell a book! - Discipulus Bookshop';
+        $data['ads'] = $this->Model_Bookmark->getAllBookmark($_SESSION['id']);
+
+        $this->load->view('shop/header and footer/shopheader', $data);
+        $this->load->view('shop/viewBookMarks');
+        $this->load->view('shop/header and footer/shopfooter');
+    }
+
+    public function bookMarkAd($id){
+        $this->Model_Bookmark->addBookmark(array(
+            'user_id'       =>  $_SESSION['id'],
+            'ad_id'       =>  $id
+        ));
+
+        redirect($this->agent->referrer());
     }
 }

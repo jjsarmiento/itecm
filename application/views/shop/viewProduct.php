@@ -17,6 +17,10 @@
                             <a href="<?=base_url()?>shop/editAd/<?=$prod['id']?>" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
                             <a href="<?=base_url()?>shop/deleteAd/<?=$prod['id']?>" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>
                         <?php
+                        }else{
+                            ?>
+                            <a href="<?=base_url()?>shop/bookMarkAd/<?=$prod['id']?>" class="btn btn-warning btn-xs"><i class="fa fa-bookmark"></i> Bookmark</a>
+                            <?php
                         }
                         ?>
                     </div>

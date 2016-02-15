@@ -63,8 +63,13 @@
                         }
                     ?>
                     <li>
+                        <a href="<?=base_url()?>/shop/viewBookMarks"><i class="fa fa-bookmark"></i> Bookmarks</a>
+                    </li>
+                    <!--
+                    <li>
                         <a href="<?=base_url()?>"><i class="fa fa-heart"></i> About</a>
                     </li>
+                    -->
                 </ul>
 
                 <div class="col-sm-4 col-md-4">
