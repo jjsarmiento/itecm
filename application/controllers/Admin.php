@@ -161,6 +161,8 @@ class Admin extends CI_Controller {
 
     public function deleteAd($id){
         $this->Model_products->deleteAd($id);
+        $this->Model_bookmark->deleteBookmark($id, null);
         redirect(base_url().'admin/home');
+
     }
 }

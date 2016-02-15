@@ -377,7 +377,8 @@ class Shop extends CI_Controller {
     }
 
     public function deleteAd($id){
-        $this->Model_products->deleteAd($id);
+        $this->Model_Products->deleteAd($id);
+        $this->Model_Bookmark->deleteBookmark($id, null);
         redirect(base_url().'shop/userProfile');
     }
 }

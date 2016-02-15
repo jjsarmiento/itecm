@@ -32,12 +32,20 @@ class Model_bookmark extends CI_Model{
     }
 
     public function deleteBookmark($ad_id, $user_id){
-        $this->db
-            ->select('*')
-            ->from('bookmarks')
-            ->where('user_id', $user_id)
-            ->where('ad_id', $ad_id)
-            ->delete();
+        if($user_id == null){
+            $this->db
+                ->select('*')
+                ->from('bookmarks')
+                ->where('ad_id', $ad_id)
+                ->delete();
+        }else{
+            $this->db
+                ->select('*')
+                ->from('bookmarks')
+                ->where('user_id', $user_id)
+                ->where('ad_id', $ad_id)
+                ->delete();
+        }
     }
 
     public function isBookmarked($ad_id){
