@@ -24,6 +24,7 @@ class Model_user extends CI_Model {
         return $this->db
             ->select('*')
             ->from('users')
+            ->where_not_in('id', $_SESSION['id'])
             ->order_by('date_added', 'DESC')
             ->get()
             ->result();

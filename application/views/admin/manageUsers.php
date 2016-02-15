@@ -21,11 +21,10 @@
                         echo '<center><i><h3>No data available</h3></i></center>';
                     }else{
                 ?>
-                       <table class="table table-responsive table-striped table-hover">
+                       <table class="table table-responsive table-condensed table-striped table-hover">
                            <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Address</th>
                                     <th>Contact</th>
                                     <th>Email</th>
                                     <th>Acct Type</th>
@@ -39,7 +38,6 @@
 
                                 <tr>
                                     <td><a target="_tab" href="<?=base_url()?>admin/viewUser/<?=$user->id?>"><?=$user->firstname?> <?=$user->lastname?></a></td>
-                                    <td><?=$user->address?></td>
                                     <td><?=$user->contact?></td>
                                     <td><?=$user->email?></td>
                                     <td><?=$user->type?></td>

@@ -11,6 +11,9 @@ class Admin extends CI_Controller {
 //        $this->exclusiveRouteFor('ADMIN', @$_SESSION['type']);
         $this->load->model('Model_User');
         $this->load->model('Model_Products');
+        $this->load->model('Model_Ureview');
+        $this->load->model('Model_Review');
+        $this->load->model('Model_Bookmark');
     }
 
     public function index(){
@@ -43,7 +46,9 @@ class Admin extends CI_Controller {
     public function viewUser($id){
         $data = array(
             'user'      =>  $this->Model_User->getUserData($id),
-            'title'     =>  'DB - ADMIN VIEW'
+            'title'     =>  'DB - ADMIN VIEW',
+            'for_reviews' =>  $this->Model_Ureview->review_for_user($id),
+            'by_reviews' =>  $this->Model_Ureview->review_by_user($id),
         );
 
         $this->load->view('admin/header and footer/adminheader', $data);
@@ -75,9 +80,11 @@ class Admin extends CI_Controller {
     public function viewProduct($id){
         $data['prod'] = $this->Model_Products->getProductData($id);
         $data['title'] = 'DB - ADMIN VIEW';
+        $prodData['reviews'] = $this->Model_Review->getReview($id);
+        $prodData['bookmarked'] = $this->Model_Bookmark->isBookmarked($id);
 
         $this->load->view('admin/header and footer/adminheader', $data);
-        $this->load->view('admin/viewProduct');
+        $this->load->view('admin/viewProduct', $prodData);
         $this->load->view('admin/header and footer/adminfooter');
     }
 
@@ -106,5 +113,25 @@ class Admin extends CI_Controller {
     public function notice(){
         $data['title'] = 'Administrator Mode';
         $this->load->view('admin/notice');
+    }
+
+    public function deleteUserReview($id){
+        $this->Model_Ureview->deleteUserReview($id);
+        redirect($this->agent->referrer());
+    }
+
+    public function changePass($id){
+        $updatedData = array(
+            'password'  =>  md5($_POST['newPass'])
+        );
+
+        $this->Model_User->updateUser($_SESSION['id'], $updatedData);
+        $_SESSION['successMsg'] = 'Password Succesfully Changed!';
+        redirect($this->agent->referrer());
+    }
+
+    public function deleteComment($id){
+        $this->Model_Review->deleteComment($id);
+        redirect($this->agent->referrer());
     }
 }

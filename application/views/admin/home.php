@@ -34,17 +34,6 @@
                                 </h4>
                                 <p><?=$product->description?></p>
                             </div>
-                            <div class="ratings">
-                                <hr/>
-                                <p class="pull-right">15 reviews</p>
-                                <p>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                </p>
-                            </div>
                         </div>
                     </div>
                 <?php

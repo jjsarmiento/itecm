@@ -25,7 +25,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?=base_url()?>shop/userProfile">
+            <a class="navbar-brand" href="<?=base_url()?>admin/home">
                 <?php
                 if(isset($_SESSION['logged_in'])){
                     echo '<i class="fa fa-user"></i> '.$_SESSION['firstname'];

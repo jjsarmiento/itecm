@@ -1,30 +1,84 @@
 <div class="container">
     <div class="row">
-        <h3>
-            <i class="fa fa-user"></i> Profile for <span style="color: #3498DB;"><?=$user->firstname?> <?=$user->lastname?></span>
-            <?php
+        <div class="col-md-4 col-sm-4 col-lg-4">
+            <h3>
+                <i class="fa fa-user"></i> Profile for <span style="color: #3498DB;"><?=$user->firstname?> <?=$user->lastname?></span>
+                <?php
                 if($user->status == 'DEACTIVATED'){
                     echo '<span style="color: #C0392B;">[ACCOUNT DEACTIVATED]</span>';
                 }
+                ?>
+            </h3>
+            <hr/>
+            <div class="thumbnailx"  style="height: 170px;">
+                <img class="prod-img" src="<?=$user->disp_pic?>" />
+            </div>
+            <i style="color: #2980B9;" class="fa fa-envelope"></i> <?=$user->email?><br/><br/>
+            <i style="color: #2980B9;" class="fa fa-key"></i> <?=$user->type?><br/><br/>
+            <i style="color: #2980B9;" class="fa fa-map-marker"></i> <?=$user->address?><br/><br/>
+            <i style="color: #2980B9;" class="fa fa-mobile"></i> <?=$user->contact?><br/><br/>
+            <i style="color: #2980B9;" class="fa fa-info"></i> <?=$user->about?>
+            <hr/>
+
+            <a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target="#changePass">Change Password</a>
+            <?php
+            if($user->status == 'ACTIVATED'){
+                ?>
+                <a href="<?=base_url()?>admin/deactivate/<?=$user->id?>" class="btn btn-danger btn-block">DEACTIVATE ACCOUNT</a>
+            <?php
+            }else{
+                ?>
+                <a href="<?=base_url()?>admin/activate/<?=$user->id?>" class="btn btn-success btn-block">ACTIVATE ACCOUNT</a>
+            <?php
+            }
             ?>
-        </h3>
-        <div class="col-md-8 col-sm-8 col-lg-8">
-            <i style="color: #2980B9;" class="fa fa-key"></i> <?=$user->type?><br/>
-            <i style="color: #2980B9;" class="fa fa-map-marker"></i> <?=$user->address?><br/>
-            <i style="color: #2980B9;" class="fa fa-mobile"></i> <?=$user->contact?><br/>
-            <i style="color: #2980B9;" class="fa fa-bookmark"></i> <?=$user->about?>
         </div>
         <div class="col-md-4 col-sm-4 col-lg-4">
+            <h3><i class="fa fa-pencil"></i> User reviews received <span style="background-color: firebrick;" class="badge"><?=count($for_reviews)?></span></h3>
+            <hr/>
+
             <?php
-                if($user->status == 'ACTIVATED'){
+            if(count($for_reviews) == 0){
+                echo "<i>No user reviews available.</i>";
+            }
+            foreach($for_reviews as $r){
+                ?>
+                <div class="form-group" style="text-align: justify; background-color: #ECF0F1; padding: 0.6em; margin-bottom: 0.6em;">
+                    <span class="pull-right">
+                        <a href="<?=base_url()?>admin/deleteUserReview/<?=$r['id']?>"><i class="fa fa-close"></i></a>
+                    </span>
+                    <hr style="margin: .5em; visibility: hidden;"/>
+                    <span class="review-name-tag"><a href="<?=base_url()?>admin/viewUser/<?=$r['reviewer_id']?>"><?=$r['firstname'].' '.$r['lastname']?></a></span>
+                    <?=$r['content']?>
+                    <Hr style="margin-top: 0.3em; margin-bottom: 0.3em;"/>
+                    <span class="review-name-tag" style="font-size: 0.8em;"><i class="fa fa-clock-o"></i> <?=$r['created_at']?></span>
+                </div>
+            <?php
+            }
             ?>
-                    <a href="<?=base_url()?>admin/deactivate/<?=$user->id?>" class="btn btn-danger btn-block">DEACTIVATE ACCOUNT</a>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-lg-4">
+            <h3><i class="fa fa-pencil"></i> User reviews made <span style="background-color: firebrick;" class="badge"><?=count($by_reviews)?></span></h3>
+            <hr/>
             <?php
-                }else{
-            ?>
-                    <a href="<?=base_url()?>admin/activate/<?=$user->id?>" class="btn btn-success btn-block">ACTIVATE ACCOUNT</a>
+            if(count($by_reviews) == 0){
+                echo "<i>No user reviews available.</i>";
+            }
+            foreach($by_reviews as $r){
+                ?>
+                <div class="form-group" style="text-align: justify; background-color: #ECF0F1; padding: 0.6em; margin-bottom: 0.6em;">
+                    <span class="pull-right">
+                        <a href="<?=base_url()?>admin/deleteUserReview/<?=$r['id']?>"><i class="fa fa-close"></i></a>
+                    </span>
+                        <hr style="margin: .5em; visibility: hidden;"/>
+                    <span class="review-name-tag"><a href="<?=base_url()?>admin/viewUser/<?=$r['reviewee_id']?>">@<?=$r['firstname'].' '.$r['lastname']?></a></span>
+                    <?=$r['content']?>
+                    <Hr style="margin-top: 0.3em; margin-bottom: 0.3em;"/>
+                    <span class="review-name-tag" style="font-size: 0.8em;"><i class="fa fa-clock-o"></i> <?=$r['created_at']?></span>
+                </div>
             <?php
-                }
+            }
             ?>
         </div>
     </div>
