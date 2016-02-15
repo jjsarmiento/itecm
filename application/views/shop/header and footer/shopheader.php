@@ -63,7 +63,7 @@
                         }
                     ?>
                     <li>
-                        <a href="<?=base_url()?>/shop/viewBookMarks"><i class="fa fa-bookmark"></i> Bookmarks</a>
+                        <a href="<?=base_url()?>shop/viewBookMarks"><i class="fa fa-bookmark"></i> Bookmarks</a>
                     </li>
                     <!--
                     <li>

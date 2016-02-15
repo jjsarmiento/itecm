@@ -84,6 +84,7 @@ class Shop extends CI_Controller {
     public function viewProduct($id){
         $prodData['prod'] = $this->Model_Products->getProductData($id);
         $prodData['reviews'] = $this->Model_Review->getReview($id);
+        $prodData['bookmarked'] = $this->Model_Bookmark->isBookmarked($id);
         $data['title'] = 'Discipulus Bookshop';
 
         $this->load->view('shop/header and footer/shopheader', $data);
@@ -245,6 +246,7 @@ class Shop extends CI_Controller {
             'date_added'        =>  $_SESSION['date_added'],
             'status'            =>  $_SESSION['status'],
             'logged_in'         =>  true,
+            'bookmarks'         =>  $_SESSION['bookmarks']
         );
 
         $this->Model_User->updateUser($_SESSION['id'], $data);
@@ -299,6 +301,41 @@ class Shop extends CI_Controller {
             'ad_id'       =>  $id
         ));
 
+        redirect($this->agent->referrer());
+    }
+
+    public function removeBookmark($productid){
+        $ad_id = $this->Model_Products->getProductData($productid)['id'];
+        $this->Model_Bookmark->deleteBookmark($ad_id, $_SESSION['id']);
+        /*
+        $newbookmark_session['bookmarks'] = array();
+
+        for($i = 0; $i < count($_SESSION['bookmarks']); $i++){
+            if($ad_id != $_SESSION['bookmarks'][$i]){
+                array_push($newbookmark_session['bookmarks'], $_SESSION['bookmarks'][$i]);
+            }
+        }
+
+        $data = array(
+            'id'                =>  $_SESSION['id'],
+            'type'              =>  $_SESSION['type'],
+            'date_added'        =>  $_SESSION['date_added'],
+            'status'            =>  $_SESSION['status'],
+            'logged_in'         =>  true,
+            'bookmarks'         =>  $newbookmark_session['bookmarks'],
+            'email'             =>  $_SESSION['email'],
+            'firstname'         =>  $_SESSION['firstname'],
+            'lastname'          =>  $_SESSION['lastname'],
+            'contact'           =>  $_SESSION['contact'],
+            'address'           =>  $_SESSION['address'],
+            'about'             =>  $_SESSION['about'],
+            'birthday'          =>  $_SESSION['birthday'],
+            'gender'            =>  $_SESSION['gender'],
+            'disp_pic'          =>  $_SESSION['disp_pic']
+        );
+
+        $this->session->set_userdata($newbookmark_session);
+        */
         redirect($this->agent->referrer());
     }
 }

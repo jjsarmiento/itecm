@@ -5,6 +5,7 @@ class Main extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('Model_User');
+        $this->load->model('Model_Bookmark');
     }
 
 	public function index(){
@@ -81,7 +82,9 @@ class Main extends CI_Controller {
                     'logged_in'     =>  true
                 );
 
-                $this->session->set_userdata($loggedUser);
+                $loggedUser['bookmarks'] = $this->Model_Bookmark->getAllBookmark_session($user_data->id);
+
+                $this->session->$data($loggedUser);
                 redirect(base_url().'shop/home');
             }
         }else{
@@ -122,6 +125,8 @@ class Main extends CI_Controller {
                     'birthday'      =>  $user_data->birthday,
                     'logged_in'     =>  true
                 );
+
+                $loggedUser['bookmarks'] = $this->Model_Bookmark->getAllBookmark_session($user_data->id);
 
                 $this->session->set_userdata($loggedUser);
 

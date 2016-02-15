@@ -21,4 +21,36 @@ class Model_bookmark extends CI_Model{
             ->get()
             ->result_array();
     }
+
+    public function getAllBookmark_session($id){
+        return $this->db
+            ->select('ad_id')
+            ->from('bookmarks')
+            ->where('user_id', $id)
+            ->get()
+            ->result_array();
+    }
+
+    public function deleteBookmark($ad_id, $user_id){
+        $this->db
+            ->select('*')
+            ->from('bookmarks')
+            ->where('user_id', $user_id)
+            ->where('ad_id', $ad_id)
+            ->delete();
+    }
+
+    public function isBookmarked($ad_id){
+        $counter = $this->db
+            ->select('*')
+            ->from('bookmarks')
+            ->where('ad_id', $ad_id)
+            ->count_all_results();
+
+        if($counter > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

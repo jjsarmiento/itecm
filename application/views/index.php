@@ -24,8 +24,15 @@
                     <li>
                         <a class="page-scroll" href="<?=base_url()?>shop/home">Shop</a>
                     </li>
+
                     <li>
-                        <a class="page-scroll" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+                    <?php
+                        if(@$_SESSION['firstname']){
+                            echo '<a href="'.base_url().'shop/userProfile">'.$_SESSION['firstname'].' '.$_SESSION['lastname'].'</a>';
+                        }else{
+                            echo '<a class="page-scroll" href="#" data-toggle="modal" data-target="#loginModal">Login</a>';
+                        }
+                    ?>
                     </li>
 <!--                    <li>-->
 <!--                        <a class="page-scroll" href="#services">Services</a>-->
