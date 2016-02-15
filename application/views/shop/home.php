@@ -2,7 +2,7 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron hero-spacer" style="padding: 2em; text-align: center;">
-        <img src="<?=base_url()?>assets/img/slogan.png">
+        <img style="max-width:100%; max-height:100%;" src="<?=base_url()?>assets/img/slogan.png">
         <!--
         <h1>Read and let read!</h1>
         <p>
