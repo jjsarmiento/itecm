@@ -97,7 +97,7 @@
                 <form method="POST" action="<?=base_url()?>shop/addReview/<?=$prod['id']?>">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <textarea class="form-control" rows="15" placeholder="Add A Review for <?=$prod['title']?>" id="review" name="review"></textarea>
+                            <textarea required="required" class="form-control" rows="15" placeholder="Add A Review for <?=$prod['title']?>" id="review" name="review"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-xs pull-right">Post Review</button>
                     </div>

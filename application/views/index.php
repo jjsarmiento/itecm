@@ -71,9 +71,10 @@
     <section id="services">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Services</h2>
-                   <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
+                <div class="col-lg-12 text-center" style="text-align: justify;">
+                    <center><h2 class="section-heading">Services</h2></center>
+
+                    <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
                 </div>
             </div>
             <div class="row text-center">
@@ -209,6 +210,14 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">About</h2>
+                    <div class="col-md-8 col-md-offset-2 well" style="margin-bottom: 3em; text-align: justify;">
+
+                        Founded in late 2015 by Team Discipulus, Discipulus has come a long way in development from its beginnings in a project for an E-commerce course in FEU Institute of Technology. When Discipulus first started out, the team’s passion for books drove them to research and eventually started building a web application that will hopefully connect likeminded people, and gave them the impetus to turn hard work and inspiration into a new online store. Now, we can now enable book lovers using Discipulus to reach each other by registering to the site and start business activities, they hope that they can make a change in the e-commerce industry.
+                        We hope you enjoy our services as much as we enjoy offering them to you. If you have any questions or comments, please don’t hesitate to contact us
+
+                        <br/><br/>Sincerely,<br/>
+                        Team Discipulus
+                    </div>
                     <!--<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>-->
                 </div>
             </div>

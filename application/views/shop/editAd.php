@@ -37,9 +37,7 @@
                             <div class="row">
                                 <div class="col-md-9">
                                     <span style="color: red;">*</span>Description
-                                    <textarea class="form-control" rows="10" id="bookDesc" name="bookDesc">
-                                        <?=$prod['description']?>
-                                    </textarea>
+                                    <textarea class="form-control" rows="10" id="bookDesc" name="bookDesc"><?=$prod['description']?></textarea>
                                 </div>
                                 <div class="col-md-3">
                                     <span style="color: red;">*</span>Price

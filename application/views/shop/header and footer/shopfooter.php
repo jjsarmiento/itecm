@@ -137,7 +137,7 @@
                     <h4 class="modal-title">Write a review for <?=$user->firstname?> <?=$user->lastname?></h4>
                 </div>
                 <div class="modal-body">
-                    <textarea name="userReview" class="form-control" placeholder="Be nice.." rows="10"></textarea>
+                    <textarea required="required" name="userReview" class="form-control" placeholder="Be nice.." rows="10"></textarea>
                 </div>
                 <div class="modal-footer">
                     <!--                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
