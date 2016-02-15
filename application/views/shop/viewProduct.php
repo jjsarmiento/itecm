@@ -2,7 +2,7 @@
     <div class="row">
         <h3 style="margin-bottom: 0;"><?=$prod['title']?></h3>
         <span><?=$prod['author']?></span><br/>
-        ad posted by <a href="<?=base_url()?>shop/viewUser/<?=$prod['user_id']?>"><?=$prod['user_fullname']?></a>
+        ad posted by <a href="<?=base_url()?>shop/viewUser/<?=$prod['user_id']?>"><?=$prod['firstname']?> <?=$prod['lastname']?></a>
         <hr/>
         <div class="col-md-8">
             <div class="row">
@@ -52,7 +52,7 @@
                                             <?php
                                                 }
                                             ?>
-                                            <span class="review-name-tag"><a href="<?=base_url()?>shop/viewUser/<?=$reviews[$i]['user_id']?>"><?=$reviews[$i]['user_fullname']?></a></span>
+                                            <span class="review-name-tag"><a href="<?=base_url()?>shop/viewUser/<?=$reviews[$i]['user_id']?>"><?=$reviews[$i]['firstname'].' '.$reviews[$i]['lastname']?></a></span>
                                             <?=$reviews[$i]['content']?>
                                             <Hr style="margin-top: 0.3em; margin-bottom: 0.3em;"/>
                                             <span class="review-name-tag" style="font-size: 0.8em;"><i class="fa fa-clock-o"></i> <?=$reviews[$i]['created_at']?></span>

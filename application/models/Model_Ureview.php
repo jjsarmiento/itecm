@@ -14,9 +14,10 @@ class Model_Ureview extends CI_Model {
 
     public function getAllReview($id){
         return $this->db
-            ->select('*')
+            ->select('user_reviews.id, user_reviews.reviewer_id, user_reviews.reviewee_id, user_reviews.content, user_reviews.created_at, users.firstname, users.lastname')
             ->from('user_reviews')
             ->where('reviewee_id', $id)
+            ->join('users', 'users.id = user_reviews.reviewer_id')
             ->get()
             ->result_array();
     }

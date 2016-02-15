@@ -9,10 +9,11 @@
 class Model_review extends CI_Model{
     public function getReview($product){
         return $this->db
-            ->select('*')
+            ->select('reviews.id, reviews.user_id, reviews.prod_id, reviews.group_id, reviews.content, reviews.created_at, users.firstname, users.lastname')
             ->from('reviews')
-            ->where('prod_id', $product)
-            ->order_by('created_at', 'DESC')
+            ->where('reviews.prod_id', $product)
+            ->join('users', 'users.id = reviews.user_id')
+            ->order_by('reviews.created_at', 'DESC')
             ->get()
             ->result_array();
     }

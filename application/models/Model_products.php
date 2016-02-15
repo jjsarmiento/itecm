@@ -21,9 +21,10 @@ class Model_Products extends CI_Model {
 
     public function getProductData($id){
         return $this->db
-                ->select('*')
+                ->select('products.id, products.user_id, products.title, products.author, products.description, products.price, products.img, products.date_added, users.firstname, users.lastname')
                 ->from('products')
-                ->where('id', $id)
+                ->where('products.id', $id)
+                ->join('users', 'users.id = products.user_id')
                 ->get()
                 ->row_array();
     }
