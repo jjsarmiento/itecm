@@ -14,6 +14,7 @@ class Admin extends CI_Controller {
         $this->load->model('Model_ureview');
         $this->load->model('Model_review');
         $this->load->model('Model_bookmark');
+        $this->load->model('Model_payment');
     }
 
     public function index(){
@@ -50,6 +51,7 @@ class Admin extends CI_Controller {
             'for_reviews' =>  $this->Model_ureview->review_for_user($id),
             'by_reviews' =>  $this->Model_ureview->review_by_user($id),
             'products'  =>  $this->Model_products->myAds($id),
+            'payments'  =>  $this->Model_payment->getUserPaymentHistory($id)
         );
 
         $data['ads'] = $this->Model_bookmark->getAllBookmark($id);

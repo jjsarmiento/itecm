@@ -152,4 +152,38 @@
             ?>
         </div>
     </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-6">
+            <h3><i class="fa fa-credit-card"></i> Payment History</h3>
+            <?php
+                if(count($payments) == 0){
+                    echo '<i>No payments made by this user</i>';
+                }else{
+                    ?>
+                    <table class="table table-striped table-condensed table-hover">
+                        <thead>
+                        <tr>
+                            <th>Details</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach($payments as $p){
+                            ?>
+                            <tr>
+                                <td><?=$p->details?></td>
+                                <td><?=$p->created_at?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                        </tbody>
+                    </table>
+                    <?php
+                }
+            ?>
+        </div>
+    </div>
 </div>
