@@ -96,4 +96,14 @@ class Model_user extends CI_Model {
             ->get()
             ->result();
     }
+
+    public function getExpiry($id){
+        return $this->db
+            ->select('payments.expires_at, payments.created_at')
+            ->from('users')
+            ->where('users.id', $id)
+            ->join('payments', 'users.id = payments.user_id')
+            ->get()
+            ->row();
+    }
 }

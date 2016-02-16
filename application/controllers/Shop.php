@@ -18,7 +18,8 @@ class Shop extends CI_Controller {
         $this->load->model('Model_Review');
         $this->load->model('Model_Ureview');
         $this->load->model('Model_Bookmark');
-
+        $this->load->model('Model_products');
+        $this->load->model('Model_payment');
     }
 
     public function index(){
@@ -50,7 +51,7 @@ class Shop extends CI_Controller {
     }
 
     public function addBook(){
-        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        //$this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['title'] = 'Sell a book! - Discipulus Bookshop';
         $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks(@$_SESSION['id']);
 
@@ -60,7 +61,7 @@ class Shop extends CI_Controller {
     }
 
     public function doAddProduct(){
-        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        //$this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $path_parts = pathinfo($_FILES['prodImg']["name"]);
         $extension = $path_parts['extension'];
         $newfilename= uniqid().".".$extension;
@@ -113,7 +114,7 @@ class Shop extends CI_Controller {
     }
 
     public function userProfile(){
-        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        //$this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data = array(
             'products'  =>  $this->Model_Products->myAds($_SESSION['id']),
             'user'      =>  $this->Model_User->getUserData($_SESSION['id']),
@@ -134,7 +135,7 @@ class Shop extends CI_Controller {
     }
 
     public function editAd($id){
-        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        //$this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['prod'] = $this->Model_Products->getProductData($id);
         $data['title'] = 'Discipulus Bookshop';
         $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks(@$_SESSION['id']);
@@ -145,7 +146,7 @@ class Shop extends CI_Controller {
     }
 
     public function doEdit($id){
-        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        //$this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks(@$_SESSION['id']);
         var_dump($this->input->post());
         $data = array(
@@ -177,7 +178,7 @@ class Shop extends CI_Controller {
     }
 
     public function viewUser($id){
-        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        //$this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data = array(
             'products'  =>  $this->Model_Products->myAds($id),
             'user'      =>  $this->Model_User->getUserData($id),
@@ -209,7 +210,7 @@ class Shop extends CI_Controller {
     }
 
     public function editProfile(){
-        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        //$this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['user'] = $this->Model_User->getUserData($_SESSION['id']);
         $data['title'] = 'Discipulus Bookshop';
         $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks(@$_SESSION['id']);
@@ -310,7 +311,7 @@ class Shop extends CI_Controller {
     }
 
     public function viewBookMarks(){
-        $this->exclusiveRouteFor('USER', @$_SESSION['type']);
+        //$this->exclusiveRouteFor('USER', @$_SESSION['type']);
         $data['title'] = 'Sell a book! - Discipulus Bookshop';
         $data['ads'] = $this->Model_Bookmark->getAllBookmark($_SESSION['id']);
         $data['bookmark_count'] = $this->Model_Bookmark->countBookmarks(@$_SESSION['id']);
@@ -380,5 +381,51 @@ class Shop extends CI_Controller {
         $this->Model_Products->deleteAd($id);
         $this->Model_Bookmark->deleteBookmark($id, null);
         redirect(base_url().'shop/userProfile');
+    }
+
+    public function payment(){
+        $expiry = $this->Model_User->getExpiry($_SESSION['id']);
+
+        $data = array(
+            'user'      =>  $this->Model_User->getUserData($_SESSION['id']),
+            'expiry'    =>  $expiry,
+            'payments'  =>  $this->Model_payment->getUserPaymentHistory($_SESSION['id'])
+        );
+
+        $data['title'] = 'Sell a book! - Discipulus Bookshop';
+
+        $this->load->view('shop/header and footer/shopheader', $data);
+        $this->load->view('shop/payment');
+        $this->load->view('shop/header and footer/shopfooter');
+    }
+
+    public function doPayment(){
+        if($_POST['payPackage'] == 'PACK1'){
+            $details = "Purchased PACKAGE 1 - Premium Services for 1 Month (30 Days) for Php100";
+            $add_days = '+30 day';
+            $payment_type = 'PREMIUM_SERVICE_P1';
+        }else{
+            $details = "Purchased PACKAGE 2 - Premium Services for 1 Year (365 Days) for Php1000";
+            $add_days = '+365 day';
+            $payment_type = 'PREMIUM_SERVICE_P2';
+        }
+
+        $date = gmdate('Y-m-d h:i:s');
+        $newdate = strtotime ($add_days ,strtotime($date));
+        $newdate = date ( 'Y-m-j h:m:s' , $newdate );
+
+        $this->Model_payment->addPayment(array(
+            'user_id'           =>  $_SESSION['id'],
+            'payment_type'      =>  $payment_type,
+            'details'           =>  $details,
+            'expires_at'        =>  $newdate,
+            'created_at'        =>  $date
+        ));
+
+        $this->Model_User->toggleStatus($_SESSION['id'], array(
+            'type'  =>   'PREMIUM_USER'
+        ));
+
+        redirect($this->agent->referrer());
     }
 }

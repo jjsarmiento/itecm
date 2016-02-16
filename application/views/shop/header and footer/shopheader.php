@@ -62,19 +62,30 @@
                     <?php
                         }
                     ?>
-                    <li>
-                        <a href="<?=base_url()?>shop/viewBookMarks">
-                            <i class="fa fa-bookmark"></i>
-                            Bookmarks
-                            <?php
-                                if(@$bookmark_count > 0){
-                                    echo '<span style="background-color: firebrick;" class="badge">'.$bookmark_count.'</span>';
-                                }
+
+                    <?php
+                        if(@$_SESSION['id']){
                             ?>
-                        </a>
-                    </li>
+                            <li>
+                                <a href="<?=base_url()?>shop/viewBookMarks">
+                                    <i class="fa fa-bookmark"></i>
+                                    Bookmarks
+                                    <?php
+                                    if(@$bookmark_count > 0){
+                                        echo '<span style="background-color: firebrick;" class="badge">'.$bookmark_count.'</span>';
+                                    }
+                                    ?>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?=base_url()?>shop/payment"><i class="fa fa-credit-card" style="color: gold;"></i> Payment</a>
+                            </li>
+                            <?php
+                        }
+                    ?>
+
                     <li>
-                        <a href="<?=base_url()?>"><i class="fa fa-heart"></i> About Us</a>
+                        <a href="<?=base_url()?>"><i class="fa fa-heart" style="color: red;"></i> About Us</a>
                     </li>
                 </ul>
 

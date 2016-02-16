@@ -142,6 +142,13 @@ class Main extends CI_Controller {
 
                 $this->session->set_userdata($loggedUser);
 
+
+                if(strtotime($this->Model_User->getExpiry($user_data->id)) == strtotime(gmdate('Y-m-d h:i:s'))){
+                    $this->Model_User->toggleStatus($user_data->id, array(
+                        'type'  =>   'USER'
+                    ));
+                }
+
                 if($user_data->type == 'ADMIN'){
                     redirect(base_url().'Admin/home');
                 }else{

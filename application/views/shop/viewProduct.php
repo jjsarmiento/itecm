@@ -2,7 +2,7 @@
     <div class="row">
         <h3 style="margin-bottom: 0;"><?=$prod['title']?></h3>
         <span><?=$prod['author']?></span><br/>
-        ad posted by <a href="<?=base_url()?>shop/viewUser/<?=$prod['user_id']?>"><?=$prod['firstname']?> <?=$prod['lastname']?></a>
+        ad posted by <a href="<?=base_url()?>shop/viewUser/<?=$prod['user_id']?>"><?=$prod['firstname']?> <?=$prod['lastname']?></a> (<?=$prod['contact']?>)
         <hr/>
         <div class="col-md-8">
             <div class="row">
